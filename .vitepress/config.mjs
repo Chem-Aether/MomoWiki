@@ -37,6 +37,8 @@ const BioChemy = [
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
+  base: "MomoWiki",
+  
   title: "MomoWiki",
   description: "A VitePress Site",
   themeConfig: {
