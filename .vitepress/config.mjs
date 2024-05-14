@@ -1,8 +1,5 @@
 import { defineConfig } from 'vitepress'
-
-
-
-
+import { directoryTreeToJson , buildDirectoryTree} from './meun.mjs'
 
 
 const BioChemy = [
@@ -35,6 +32,31 @@ const BioChemy = [
   }
 ];
 
+const kaoyanzz = [
+  {
+    text:'考研政治理论知识',
+    items:[
+      { text:'马克思主义原理',
+        items:[
+          {
+            text:'0.导学',link:'/考研政治/理论知识/马克思主义原理/0.导学/1.马克思主义的内涵及构成',collapsed: true,
+            items: [{
+              text:'马克思主义的内涵及构成',link:'/考研政治/理论知识/马克思主义原理/0.导学/1.马克思主义的内涵及构成',
+            }]
+          },
+          {
+            text:'1.马克思主义哲学',link:'/考研政治/理论知识/马克思主义原理/0.导学/1.马克思主义的内涵及构成',collapsed: true,
+            items: [],
+          }
+        ],
+      },
+      {text:'毛泽东思想和中国特色社会主义理论体系概论',link:'/考研政治/理论知识'},
+      {text:'思想道德与法制',link:'/考研政治/理论知识'},
+      {text:'习近平新时代中国特色社会主义思想概论',link:'/考研政治/理论知识'},
+      {text:'中国近代史纲要',link:'/考研政治/理论知识'},
+    ],
+  }
+];
 
 export default defineConfig({
   base: "/MomoWiki/",
@@ -48,7 +70,8 @@ export default defineConfig({
     ],
 
     sidebar: {
-      '/生物化学/': BioChemy,
+      '/生物化学/': buildDirectoryTree('./生物化学'),
+      '/考研政治/': buildDirectoryTree('./考研政治'),
     },
 
     socialLinks: [

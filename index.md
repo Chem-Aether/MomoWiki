@@ -26,5 +26,6 @@ features:
     details: 考研英语
   - title: 考研政治
     details: 考研政治
+    link: /考研政治/理论知识/
 ---
 
