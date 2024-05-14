@@ -26,7 +26,8 @@ export function buildDirectoryTree(dirPath) {
         text: item.split('.').length > 1 ? 
               item.split('.').slice(1, -1).join('.') : 
               item.split('.'),
-        link:itemPath,
+        //转换文件路径格式
+        link: '/' + itemPath.replace(/\\/g,'/'),
       });
     }
   }
@@ -41,6 +42,5 @@ export function directoryTreeToJson(dirPath) {
 
 
 // directoryTreeToJson('./考研政治');
-// console.log(typeof(buildDirectoryTree('./考研政治')))
+console.log(directoryTreeToJson('./生物化学'));
 // 调用函数并打印结果
-// console.log(directoryTreeToJson(dirPath));
