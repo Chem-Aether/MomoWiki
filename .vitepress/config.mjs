@@ -35,14 +35,13 @@ const BioChemy = [
   }
 ];
 
-// https://vitepress.dev/reference/site-config
+
 export default defineConfig({
   base: "/MomoWiki/",
   
   title: "MomoWiki",
-  description: "A VitePress Site",
+  description: "2025考研资料站",
   themeConfig: {
-    // https://vitepress.dev/reference/default-theme-config
     nav: [
       { text: 'Home', link: '/' },
       { text: 'Examples', link: '/markdown-examples' }
