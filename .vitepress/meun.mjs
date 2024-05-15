@@ -11,7 +11,15 @@ export function buildDirectoryTree(dirPath) {
     items: []
   };
 
-  const paths = fs.readdirSync(dirPath);
+  const paths = fs.readdirSync(dirPath).sort((a, b) => {
+    const A = Number(a.split('.')[0]) ?Number(a.split('.')[0]) :0;
+    const B = Number(b.split('.')[0]) ?Number(b.split('.')[0]) :0;
+    // console.log(A,B)
+    return A-B;
+  });;
+
+
+
   for (const item of paths) {
     const itemPath = path.join(dirPath, item);
     const stat = fs.statSync(itemPath);
@@ -29,6 +37,11 @@ export function buildDirectoryTree(dirPath) {
         //转换文件路径格式
         link: '/' + itemPath.replace(/\\/g,'/'),
       });
+    }
+    //为index文件创建链接
+    else if(item == 'index.md') {
+        tree.link = '/' + itemPath.replace(/\\/g,'/');
+        // console.log(itemPath);
     }
   }
   // console.log(typeof(tree));
