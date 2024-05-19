@@ -55,5 +55,5 @@ export function directoryTreeToJson(dirPath) {
 
 
 // directoryTreeToJson('./考研政治');
-// console.log(directoryTreeToJson('./生物化学'));
+// console.log(directoryTreeToJson('./考研政治'));
 // 调用函数并打印结果

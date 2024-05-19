@@ -1,6 +1,7 @@
 import { defineConfig } from 'vitepress'
 import { directoryTreeToJson, buildDirectoryTree } from './meun.mjs'
 
+// npm run docs:dev
 
 const BioChemy = [
   {
