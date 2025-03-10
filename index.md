@@ -15,6 +15,11 @@ hero:
       link: /api-examples
 
 features:
+  - title: 动力学模拟
+    details: 动力学模拟
+    link: /动力学模拟/
+  - title: 分子对接
+    details: 分子对接
   - title: 生物化学
     details: 生物化学原理
     link: /生物化学/
@@ -26,10 +31,6 @@ features:
     details: 波谱分析
   - title: 有机化学
     details: 有机化学
-  - title: 考研英语
-    details: 考研英语
-  - title: 考研政治
-    details: 考研政治
-    link: /考研政治/
+
 ---
 
