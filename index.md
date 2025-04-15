@@ -4,8 +4,8 @@ layout: home
 
 hero:
   name: "Momo's Wiki"
-  text: "药学考研资料站"
-  tagline: 分享一些考研小资料、公共课、专业课等
+  text: "药学资料站"
+  tagline: 分享一些小资料、公共课、专业课等
   actions:
     - theme: brand
       text: 联系作者
