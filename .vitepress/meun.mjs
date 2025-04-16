@@ -25,9 +25,11 @@ export function buildDirectoryTree(dirPath) {
     const stat = fs.statSync(itemPath);
     //如果是文件夹
     if (stat.isDirectory()) {
-      tree.items.push(buildDirectoryTree(itemPath));
+      if (item !== "public"){
+        tree.items.push(buildDirectoryTree(itemPath));
+      }
     } 
-    //如果是文件
+    //如果是文件 
     else if(item != 'index.md' && (item.split('.').slice(-1)[0] == 'md') ) {
       tree.items.push({
         //去除扩展名
