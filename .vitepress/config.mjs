@@ -5,7 +5,7 @@ import { directoryTreeToJson, buildDirectoryTree } from './meun.mjs'
 
 
 export default defineConfig({
-  base: '/',
+  base: '/MomoWiki/',
 
   title: 'MomoWiki',
   description: '医药与计算机交叉学课资料站',
