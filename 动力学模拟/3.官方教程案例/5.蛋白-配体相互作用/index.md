@@ -1,5 +1,5 @@
 # 案例五 蛋白-配体相互作用
-本例将指导新用户完成设置模拟系统的过程，该系统包含蛋白质（T4 溶菌酶 L99A/M102Q）与配体的复合物。本教程特别关注与处理配体相关的问题，前提是用户熟悉基本的 GROMACS作和拓扑的内容。
+本案例将指导用户完成设置模拟系统的过程，该系统包含蛋白质（T4 溶菌酶 L99A/M102Q）与配体的复合物。本教程特别关注与处理配体相关的问题，前提是用户熟悉基本的GROMACS命令和拓扑的内容。
 
 ![](root.png)
 
@@ -256,7 +256,7 @@ gmx editconf -f complex.gro -o complex_box.gro -d 0.8 -bt cubic
 gmx editconf -f complex.gro -o complex_box.gro -bt dodecahedron -d 1.0
 ```
 
-## 加溶剂
+### 加溶剂
 
 得到`complex_box.gro`文件后为容器内加水：
 
@@ -750,3 +750,224 @@ gmx mdrun -deffnm md_0 -nb gpu -v
 
 ## 结果分析
 
+最终的运行输出如下：
+
+```
+step 5000000, remaining wall clock time:     0 s
+               Core t (s)   Wall t (s)        (%)
+       Time:   104976.000    13122.000      800.0
+                         3h38:42
+                 (ns/day)    (hour/ns)
+Performance:       65.844        0.364
+```
+
+### 矫正轨迹
+
+::: tip
+为什么要进行矫正？
+
+1. 解决周期性边界条件（PBC）问题
+
+在MD模拟中，系统通常使用周期性边界条件（PBC），分子可能在模拟盒子边缘“断裂”（例如，一个水分子的一部分在盒子左侧，另一部分在右侧）。使用 `-pbc mol` 会重新包装分子，确保每个分子是完整的（基于质量中心位置）。
+
+2. 将轨迹居中（便于可视化与分析）
+
+`-center` 将选定的组（默认为组 1，通常是蛋白质）置于盒子中心，避免分子在盒子边缘漂移，使轨迹更易观察（如用VMD或PyMOL可视化时）。
+
+3. 优化盒子形状
+
+`-ur compact` 将系统放入最小的矩形（正交）盒子，避免模拟盒子中有空洞（例如，菱形盒子转换为紧凑的矩形盒子），提高后续分析效率。
+
+:::
+
+调用 `trjconv` 来执行操作：
+
+```
+gmx trjconv -s md_0.tpr -f md_0.xtc -o md_0_center.xtc -center -pbc mol -ur compact
+```
+
+选择 **“1 Protein”** 进行居中，选择 **“0 System”** 进行输出，得到居中后的轨迹文件 `md_0_center.xtc`
+
+在后续计算中需要起始帧做参比，使用 `trjconv -dump` 提取轨迹的第一帧 （t = 0 ns），并选择载入的是重新居中的轨迹文件 `md_0_center.xtc`：
+
+```
+gmx trjconv -s md_0.tpr -f md_0_center.xtc -o start.pdb -dump 0
+```
+
+选择 **“0 System”** 进行输出，得到居中后的起始帧文件 `start.pdb`，它包含所有原子（蛋白、水、离子等），适合后续全体系分析或重启模拟。
+
+使用pymol可以可视化查看起始帧文件：
+
+![](start.png)
+
+执行下列命令，获得更平滑的可视化，同时执行旋转和平移拟合，消除分子整体平动和转动，使轨迹更适合分析（如 RMSD、RMSF 或可视化）：
+
+```
+gmx trjconv -s md_0.tpr -f md_0_center.xtc -o md_0_fit.xtc -fit rot+trans
+```
+
+选择 **“4 Backbone”** 对蛋白质骨架进行最小二乘拟合，选择 **“0 System”** 进行输出，得到拟合后的轨迹文件 `md_0_fit.xtc`。
+
+利用VMD或pymol载入`md_0.gro`和`md_0_fit.xtc`轨迹文件，即可查看可视化动画：
+
+### 结构稳定性分析
+
+分子动力学（MD）模拟数据的数据分析主要包括 **结构稳定性分析** 和 **能量分析** ，涵盖 **RMSD、RMSF、Rg、氢键、SASA、自由能形貌图** 以及 **MMPBSA结合自由能计算** 和 **残基能量分解**，均可使用GROMACS和辅助工具（python）完成。
+
+#### **RMSD（均方根偏差）**
+**作用**：评估蛋白质整体结构的稳定性（相对于初始构象的偏差）。  
+**命令**：
+```bash
+gmx rms -s md_0.tpr -f md_0_fit.xtc -o rmsd.xvg
+```
+- **交互选择**：  
+  - 拟合组：`Backbone`（或 `C-alpha`）  
+  - 计算组：`Backbone`  
+- **输出**：`rmsd.xvg`（时间 vs. RMSD，单位：nm）  
+- **可视化**：蛋白质整体结构随时间的变化幅度
+![](rmsd.png)
+
+#### **RMSF（均方根波动）**
+**作用**：分析残基的柔性（波动性），识别活性位点或柔性区域。  
+**命令**：
+```bash
+gmx rmsf -s md_0.tpr -f md_0_fit.xtc -o rmsf.xvg -res
+```
+- **交互选择**：`Backbone` 或 `Protein`  
+- **输出**：`rmsf.xvg`（残基编号 vs. RMSF，单位：nm）  
+- **绘图**：可以看到该蛋白质的163个氨基酸残基柔性
+![](rmsf.png)
+
+#### **B因子（温度因子，B-factor）**
+**作用**：在分子动力学（MD）模拟中表征原子位置波动性的重要指标，与实验结构（如X射线晶体学或冷冻电镜）中的B因子意义一致。
+
+**命令**：下列命令计算原子均方波动（MSF）
+
+```bash
+gmx rmsf -s md_0.tpr -f md_0_fit.xtc -o rmsf_B.xvg -oq bfactor.pdb -res
+```
+- **交互选择**：选择计算组（通常为 `Protein` 或 `Backbone`）。
+- **输出**：`-oq bfactor.pdb`：输出包含B因子的PDB文件，可直接用PyMOL/VMD可视化。
+
+GROMACS的 `rmsf` 工具直接输出的 `bfactor.pdb` 已自动将RMSF（单位：nm）转换为B因子（单位：Å²）：
+$$
+B = 8\pi^2 \cdot \text{RMSF}^2 \times 100
+$$
+（注：1 nm² = 100 Å²）
+
+**可视化**：
+
+使用pymol打开`bfactor.pdb`文件后，输入以下命令：
+
+```python
+spectrum b, blue_white_red, minimum=0, maximum=100
+```
+
+得到蛋白质结构可视化图像，柔性区域（高B因子）显示为红色，刚性区域（低B因子）为蓝色：颜色的深浅变化代表了 B-factor 值的高低。
+
+![](bfactor.png)
+
+#### **Rg（回转半径）**
+**作用**：衡量蛋白质的紧凑性（折叠/展开状态）。  
+**命令**：
+```bash
+gmx gyrate -s md_0.tpr -f md_0_fit.xtc -o gyrate.xvg
+```
+- **交互选择**：`Protein`  
+- **输出**：`gyrate.xvg`（时间 vs. Rg，单位：nm）  
+- **绘图**：可以看到蛋白质三个坐标方向的回转半径随时间变化曲线
+![](rg.png)
+
+#### **氢键（HBonds）**
+**作用**：统计氢键数量及关键残基间的氢键。  
+
+**(1) 分析蛋白质内部氢键**
+选择供体组：**1 Protein**（蛋白质所有可能供体），受体组：**1 Protein**（蛋白质所有可能受体）
+
+**命令**：
+```bash
+gmx hbond -s md_0.tpr -f md_0_fit.xtc -num hbnum.xvg
+```
+
+- **输出**：  
+  - `hbnum.xvg`：时间 vs. 氢键数量  
+  - `hbond.ndx`：氢键对列表（可用 `gmx mindist` 进一步分析特定残基）  
+
+![](hbnum.png)
+
+**(2) 分析蛋白质-配体/水分子氢键**
+
+载入索引组，选择复合物：**22 Protein_MOL**（蛋白质所有可能供体），受体组：**22 Protein_MOL**（蛋白质所有可能受体）
+
+**命令**：
+```
+gmx hbond -s md_0.tpr -f md_0_fit.xtc -num hbnum_complex.xvg -n index.ndx
+```
+
+- **输出**：  
+  - `hbnum_complex.xvg`：时间 vs. 氢键数量  
+  - `hbond_complex.ndx`：氢键对列表（可用 `gmx mindist` 进一步分析特定残基）  
+
+![](hbnum_complex.png)
+
+#### **SASA（溶剂可及表面积）**
+**作用**：分析蛋白质折叠/展开状态、疏水核心暴露程度。  
+**命令**：
+```bash
+gmx sasa -s md_0.tpr -f md_0_fit.xtc -o sasa.xvg -tu ns
+```
+- **交互选择**：`1 Protein`
+- **输出**：`sasa.xvg`（时间 vs. SASA，单位：nm²）  
+- **结果分析**：SASA值增大，可能表示蛋白质解折叠或局部结构松动；SASA值减小，可能反映蛋白质构象收缩或聚集。
+
+![](sasa.png)
+
+#### **自由能形貌图（FEL）**
+**作用**：通过降维投影（如PCA）构建自由能景观。  
+**步骤**：
+1. **计算主成分（PCA）**：
+   ```bash
+   gmx covar -s md_0_10.tpr -f md_0_10_fit.xtc -o eigenval.xvg -v eigenvec.trr
+   ```
+   - 拟合组：`Backbone`  
+   - 计算组：`Backbone`  
+
+2. **投影轨迹到主成分**：
+   ```bash
+   gmx anaeig -s md_0_10.tpr -f md_0_10_fit.xtc -v eigenvec.trr -proj proj.xvg -first 1 -last 2
+   ```
+
+3. **生成自由能图**（需脚本，如 `gmx sham` 或 Python）：
+   ```bash
+   gmx sham -f proj.xvg -ls gibbs.xpm -g gibbs.log
+   ```
+   - 用 `grace` 或 `PyMOL` 可视化 `gibbs.xpm`。
+
+### **能量分析**
+
+#### **MM-PBSA 结合自由能计算**
+**作用**：估算蛋白质-配体结合自由能（ΔG<sub>bind</sub>）。  
+**工具**：`g_mmpbsa`（需安装）  
+**步骤**：
+1. **生成能量项**：
+   ```bash
+   gmx mmpbsa -s md_0_10.tpr -f md_0_10_fit.xtc -n index.ndx -pdie 2 -pbsa -decomp
+   ```
+   - `index.ndx` 需包含 `Protein`、`Ligand` 和 `Complex` 组。  
+
+2. **分析结果**：
+   - 输出文件 `energy_MMPBSA.xvg` 包含范德华、静电、极性/非极性溶剂化能。  
+   - 结合自由能公式：  
+     ΔG<sub>bind</sub> = ΔG<sub>complex</sub> - ΔG<sub>protein</sub> - ΔG<sub>ligand</sub>  
+
+---
+
+#### **残基能量分解**
+**作用**：识别对结合自由能贡献大的残基。  
+**命令**：
+```bash
+gmx mmpbsa -s md_0_10.tpr -f md_0_10_fit.xtc -n index.ndx -pbsa -decomp -res
+```
+- **输出**：`contrib_MMPBSA.dat`（各残基的 ΔG 贡献值）。  
+
+---

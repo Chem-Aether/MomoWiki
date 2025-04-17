@@ -29,5 +29,9 @@ export default defineConfig({
       level: [2, 3],
     },
 
+  },
+
+  markdown: {
+      math: true
   }
 })
