@@ -28,10 +28,18 @@ export default defineConfig({
     outline: {
       level: [2, 3],
     },
+    lastUpdated: {
+      text: '最新更新于',
+      formatOptions: {
+        dateStyle: 'full',
+        timeStyle: 'medium'
+      }
+    }
 
   },
 
   markdown: {
       math: true
-  }
+  },
 })
+

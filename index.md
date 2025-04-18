@@ -5,21 +5,23 @@ layout: home
 hero:
   name: "Momo's Wiki"
   text: "药学资料站"
-  tagline: 分享一些小资料、公共课、专业课等
+  tagline: 分享一些CADD、AIDD和生物医药小资料
   actions:
     - theme: brand
       text: 联系作者
-      link: /markdown-examples
+      link: /contacts
     - theme: alt
       text: 网站介绍
-      link: /api-examples
+      link: /introduction
 
 features:
+  - title: 分子对接
+    details: 分子对接
   - title: 动力学模拟
     details: 动力学模拟
     link: /动力学模拟/
-  - title: 分子对接
-    details: 分子对接
+  - title: 科研数据分析
+    details: 数据分析教程
   - title: 生物化学
     details: 生物化学原理
     link: /生物化学/
