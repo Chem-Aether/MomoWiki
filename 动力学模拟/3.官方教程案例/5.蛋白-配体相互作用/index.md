@@ -318,7 +318,7 @@ gmx grompp -f ions.mdp -c complex_SOL.gro -p topol.top -o ions.tpr -maxwarn 1
 gmx genion -s ions.tpr -p topol.top -o system.gro -neutral
 ```
 
-这里选择分组时选择**SOL（15）**对应的分组，产生的带有离子且电中性的体系为`system.gro`。同时可以额外使用`-pname NA -nname CL`来选择添加的阴阳离子类型，具体名称根据力场来选择。
+这里选择分组时选择 **SOL（15）** 对应的分组，产生的带有离子且电中性的体系为`system.gro`。同时可以额外使用`-pname NA -nname CL`来选择添加的阴阳离子类型，具体名称根据力场来选择。
 
 最终的结果为总拓扑文件`[ molecules ]`后出现对应数目的离子，同时使用pymol也观察到`system.gro`文件中加载了氯离子，离子数目应该和上文的电荷数`Total charge in system x.000 e`相对应：
 
