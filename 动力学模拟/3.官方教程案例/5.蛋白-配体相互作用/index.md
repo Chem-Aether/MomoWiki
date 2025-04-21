@@ -191,7 +191,7 @@ Group     1 (          Other) has    22 elements
 Group     2 (            MOL) has    22 elements
 ```
 
-得到了小分子的位置限制文件`posre_mol.itp`，将下列语句插入到mol.itp文件的末尾，复制时连同“#”井号一同复制，最好在末尾添加之前空一行，方便检查文件错误。
+得到了小分子的位置限制文件`posre_mol.itp`，将下列语句插入到`mol.itp`文件的末尾，复制时连同“#”井号一同复制，最好在末尾添加之前空一行，方便检查文件错误。
 
 ```
 #ifdef POSRES
@@ -218,7 +218,7 @@ Group     2 (            MOL) has    22 elements
 
 这样当mdp中使用define = -DPOSRES的时候配体的位置也会被限制。
 
-把配体的itp文件引入整体的拓扑文件topol.top，在引入的时候需要将小分子的mol.itp文件引入到蛋白质链之前，因为mol.itp最开头定义了[atomtypes]因此，这个itp要最优先被引入。
+把配体的itp文件引入整体的拓扑文件`topol.top`，在引入的时候需要将小分子的`mol.itp`文件引入到蛋白质链之前，因为`mol.itp`最开头定义了[atomtypes]因此，这个itp要最优先被引入。
 
 即，将下列黄色语句插入到引入蛋白质的`topol.itp`文件引入之前，最终顺序如下；
 
@@ -419,7 +419,7 @@ Group     2 (            MOL) has    22 elements
 Group     3 (   System_&_!H*) has    10 elements  // [!code warning]
 ```
 
-将此信息包含在拓扑中，方法有很多种。最简单的，如果只想在蛋白质也被约束时抑制配体，在指示的位置将以下黄色代码行添加到拓扑结构对应位置中：
+将此信息包含在拓扑中，方法有很多种。最简单的，如果只想在蛋白质也被约束时抑制配体，在指示的位置将以下黄色代码行添加到拓扑文件`topol.itp`的对应位置中：
 
 ```
 ; Include Position restraint file
@@ -440,9 +440,9 @@ Group     3 (   System_&_!H*) has    10 elements  // [!code warning]
 
 位置很重要，必须按照指示在拓扑中调用 `posre_mol.itp`。
 
-`mol.itp` 中的参数为我们的配体定义了一个指令，引用文件以包含水拓扑结构 （tip3p.itp） 结束，在其他任何位置调用 posre_mol.itp 将尝试将位置约束参数应用于错误的分子类型。
+`mol.itp` 中的参数为我们的配体定义了一个指令，引用文件以包含水拓扑结构 （`tip3p.itp`） 结束，在其他任何位置调用 `posre_mol.itp` 将尝试将位置约束参数应用于错误的分子类型。
 
-最后需要一个合并蛋白质和 MOL 的特殊索引组，通过 `make_ndx` 模块来实现这，提供整个系统的任何坐标文件。这里使用的是 em.gro，这是我们系统的输出（最小化）结构：
+最后需要一个合并蛋白质和 MOL 的特殊索引组，通过 `make_ndx` 模块来实现这，提供整个系统的任何坐标文件。这里使用的是 `em.gro`，这是我们系统的输出（最小化）结构：
 
 ```
 gmx make_ndx -f em.gro -o index.ndx
@@ -897,7 +897,7 @@ gmx hbond -s md_0.tpr -f md_0_fit.xtc -num hbnum.xvg
 
 **(2) 分析蛋白质-配体/水分子氢键**
 
-载入索引组，选择复合物：**22 Protein_MOL**（蛋白质所有可能供体），受体组：**22 Protein_MOL**（蛋白质所有可能受体）
+载入索引组，选择复合物：**1 Protein**（蛋白质作为氢键供体），受体组：**13 MOL**（小分子做氢键受体）
 
 **命令**：
 ```
@@ -925,49 +925,80 @@ gmx sasa -s md_0.tpr -f md_0_fit.xtc -o sasa.xvg -tu ns
 #### **自由能形貌图（FEL）**
 **作用**：通过降维投影（如PCA）构建自由能景观。  
 **步骤**：
-1. **计算主成分（PCA）**：
-   ```bash
-   gmx covar -s md_0_10.tpr -f md_0_10_fit.xtc -o eigenval.xvg -v eigenvec.trr
-   ```
-   - 拟合组：`Backbone`  
-   - 计算组：`Backbone`  
+将`rmsd.xvg`和`gyrate.xvg`的数据列合并在一起，并删除x、y、z三个分量的数据，只保留时间、rmsd、Rg三列数据，最终效果如下：
 
-2. **投影轨迹到主成分**：
-   ```bash
-   gmx anaeig -s md_0_10.tpr -f md_0_10_fit.xtc -v eigenvec.trr -proj proj.xvg -first 1 -last 2
-   ```
+``` ts:line-numbers {}
+0 0.0005029 2.08542
+10  0.08738 2.11151
+20  0.10294 2.11733
+30  0.12788 2.11688
+40  0.13387 2.12032
+50  0.12505 2.12589
+60  0.12247 2.11993
+70  0.12725 2.11907
+80  0.14401 2.11781
+90  0.14772 2.1241
+100 0.15343 2.12551
+110 0.15198 2.11755
+120 0.15491 2.1219
+130 0.13968 2.11864
+140 0.14124 2.12206
+150 0.14824 2.13163
+160 0.15263 2.13902
+170 0.14406 2.13907
+180 0.15069 2.12369
+190 0.14426 2.13104
+200 0.14003 2.12969
+210 0.1314  2.118
+```
 
-3. **生成自由能图**（需脚本，如 `gmx sham` 或 Python）：
-   ```bash
-   gmx sham -f proj.xvg -ls gibbs.xpm -g gibbs.log
-   ```
-   - 用 `grace` 或 `PyMOL` 可视化 `gibbs.xpm`。
+输入下列命令，得到`gibbs.xpm`文件，即为自由能结果
+```bash
+gmx sham -f RMSD_Rg.xvg
+```
+生成2D自由能形貌图：
+```
+dit xpm_show -f gibbs.xpm -x "RMSD (nm)" -y "Rg (nm)"
+```
+生成3D自由能形貌图：
+```
+dit xpm_show -f gibbs.xpm -eg plotly -m 3d -cmap spectral -x "RMSD (nm)" -y "Rg (nm)"
+```
 
 ### **能量分析**
+本文后续的计算分析需要借助Linux系统的`AmberTools`和`gmx_MMPBSA`来完成。
 
 #### **MM-PBSA 结合自由能计算**
-**作用**：估算蛋白质-配体结合自由能（ΔG<sub>bind</sub>）。  
-**工具**：`g_mmpbsa`（需安装）  
+**作用**：估算蛋白质-配体结合自由能（ΔG<sub>bind</sub>）。    
 **步骤**：
-1. **生成能量项**：
-   ```bash
-   gmx mmpbsa -s md_0_10.tpr -f md_0_10_fit.xtc -n index.ndx -pdie 2 -pbsa -decomp
-   ```
-   - `index.ndx` 需包含 `Protein`、`Ligand` 和 `Complex` 组。  
 
-2. **分析结果**：
-   - 输出文件 `energy_MMPBSA.xvg` 包含范德华、静电、极性/非极性溶剂化能。  
-   - 结合自由能公式：  
-     ΔG<sub>bind</sub> = ΔG<sub>complex</sub> - ΔG<sub>protein</sub> - ΔG<sub>ligand</sub>  
+新建以下的`mmpbsa.in`文件：
+```
+&general
+sys_name="Prot-Lig-CHARMM",
+startframe=1,
+endframe=10,
+#PBRadii=7,
+/
+&pb
+istrng=0.15, 
+fillratio=4.0, 
+radiopt=0
+/
+&decomp
+idecomp=2, 
+dec_verbose=3,
+print_res="within 4"
+/
+```
 
----
+运行下列命令，可以根据需求设置`-np`参数的cpu核数：
+```
+mpirun -np 8 gmx_MMPBSA -O -i mmpbsa.in -cs com.tpr -ci index.ndx -cg 1 13 -ct com_traj.xtc -cp topol.top
+```
+若出现报错，请根据提示自行查证，最常见的错误是拓扑文件丢失或名称不对应，按照提示改正即可，运行成功的标志是生成了`FINAL_DECOMP_MMPBSA.dat`、`FINAL_RESULTS_MMPBSA.dat`文件，在。
 
 #### **残基能量分解**
 **作用**：识别对结合自由能贡献大的残基。  
-**命令**：
-```bash
-gmx mmpbsa -s md_0_10.tpr -f md_0_10_fit.xtc -n index.ndx -pbsa -decomp -res
-```
-- **输出**：`contrib_MMPBSA.dat`（各残基的 ΔG 贡献值）。  
 
 ---

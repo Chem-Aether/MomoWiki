@@ -20,6 +20,9 @@ features:
   - title: 动力学模拟
     details: 动力学模拟
     link: /动力学模拟/
+  - title: 药物设计概论
+    details: 生信、CADD、AIDD各领域介绍
+    link: /药物设计概论/  
   - title: 科研数据分析
     details: 数据分析教程
   - title: 生物化学
