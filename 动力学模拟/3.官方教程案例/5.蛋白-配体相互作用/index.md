@@ -965,6 +965,46 @@ dit xpm_show -f gibbs.xpm -x "RMSD (nm)" -y "Rg (nm)"
 dit xpm_show -f gibbs.xpm -eg plotly -m 3d -cmap spectral -x "RMSD (nm)" -y "Rg (nm)"
 ```
 
+#### 利用主成分绘制FEL
+
+一般来说利用主成分绘制FEL，也就是用`主成分1`和`主成分2`取代上文的rmsd和gyrate，后面的处理就都是一样的。
+
+要获得主成分，需要对轨迹进行主成分分析，gmx提供了covar命令和anaeig命令帮助我们进行相关分析。请一定注意要在PCA之前消除轨迹的平动和转动，以免分子的整体运动影响分子内部运动的分析。
+
+covar命令的作用是对轨迹进行协方差矩阵和本征向量的计算：
+
+```
+gmx covar -s md_0.tpr -f md_0_fit.xtc -o eigenvalues.xvg -v eigenvectors.trr -xpma covapic.xpm
+```
+
+按提示选择使用哪些原子做align，选**3 C-alpha**或者**4 backbone**，之后选择对哪些原子做PCA，也选C-alpha或者backbone。
+
+`eigenvalues.xvg`里面记录了分析得出的多个本征值的序号和大小，对于FEL来说，我们通常希望前两个本征值的大小的和可以越大越好，这意味着前两个主成分就可以代表蛋白的大部分运动信息。
+
+`eigenvectors.trr`即是投影到本征向量之后的轨迹，`covapic.xpm`即是轨迹的协方差矩阵。
+
+利用`anaeig`命令将轨迹投影到前两个主成分上，得到`pc1.xvg`和`pc2.xvg`文件，它们在之后绘制FEL中的作用就同于前面`rmsd.xvg`和`gyrate.xvg`。
+
+```
+gmx anaeig -s md_0.tpr -f md_0_fit.xtc -v eigenvectors.trr -first 1 -last 1 -proj pc1.xvg
+
+gmx anaeig -s md_0.tpr -f md_0_fit.xtc -v eigenvectors.trr -first 2 -last 2 -proj pc2.xvg  
+```
+
+之后组合两个主成分，得到`pc12_sham.xvg`文件，然后利用sham命令生成自由能形貌图：
+
+```
+gmx sham -tsham 310 -nlevels 100 -f pc12_sham.xvg -ls pc12_gibbs.xpm -g pc_12.log -lsh pc12_enthalpy.xpm -lss pc12_entropy.xpm
+```
+
+生成的`pc12_gibbs.xpm`可视化之后如下：
+
+
+我们发现，通过前两个主成分做出来的FEL和通过RMSD、Gyrate做出来的FEL并不一样。是的，因为它们代表了蛋白不同尺度（或者方向）上的运动，对于蛋白的表示不同，得到的FEL也会不同。文献当中，这两种FEL的绘制方式都很常见。
+
+
+
+
 ### **能量分析**
 本文后续的计算分析需要借助Linux系统的`AmberTools`和`gmx_MMPBSA`来完成。
 
@@ -996,7 +1036,7 @@ print_res="within 4"
 ```
 mpirun -np 8 gmx_MMPBSA -O -i mmpbsa.in -cs com.tpr -ci index.ndx -cg 1 13 -ct com_traj.xtc -cp topol.top
 ```
-若出现报错，请根据提示自行查证，最常见的错误是拓扑文件丢失或名称不对应，按照提示改正即可，运行成功的标志是生成了`FINAL_DECOMP_MMPBSA.dat`、`FINAL_RESULTS_MMPBSA.dat`文件，在。
+若出现报错，请根据提示自行查证，最常见的错误是拓扑文件丢失或名称不对应，按照提示改正即可，运行成功的标志是生成了 `FINAL_DECOMP_MMPBSA.dat`、`FINAL_RESULTS_MMPBSA.dat`文件，在。
 
 #### **残基能量分解**
 **作用**：识别对结合自由能贡献大的残基。  

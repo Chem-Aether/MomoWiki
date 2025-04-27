@@ -23,19 +23,14 @@ features:
   - title: 药物设计概论
     details: 生信、CADD、AIDD各领域介绍
     link: /药物设计概论/  
+  - title: 机器学习
+    details: AI人工智能相关基础
+    link: /机器学习/
   - title: 科研数据分析
     details: 数据分析教程
   - title: 生物化学
     details: 生物化学原理
     link: /生物化学/
-  - title: 分析化学
-    details: 分析化学
-  - title: 仪器分析
-    details: 仪器分析
-  - title: 波谱分析
-    details: 波谱分析
-  - title: 有机化学
-    details: 有机化学
 
 ---
 
