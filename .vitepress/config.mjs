@@ -3,7 +3,6 @@ import { directoryTreeToJson, buildDirectoryTree } from './meun.mjs'
 
 // npm run docs:dev
 
-
 export default defineConfig({
   base: '/MomoWiki/',
 
