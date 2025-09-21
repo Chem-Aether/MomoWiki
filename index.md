@@ -28,9 +28,7 @@ features:
     link: /机器学习/
   - title: 科研数据分析
     details: 数据分析教程
-  - title: 生物化学
-    details: 生物化学原理
-    link: /生物化学/
+
 
 ---
 

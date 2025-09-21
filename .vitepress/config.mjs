@@ -14,8 +14,7 @@ export default defineConfig({
     ],
 
     sidebar: {
-      '/生物化学/': buildDirectoryTree('./生物化学'),
-      '/动力学模拟/': buildDirectoryTree('./动力学模拟'),
+       '/动力学模拟/': buildDirectoryTree('./动力学模拟'),
       '/药物设计概论/': buildDirectoryTree('./药物设计概论'),
       '/机器学习/': buildDirectoryTree('./机器学习'),
     },
