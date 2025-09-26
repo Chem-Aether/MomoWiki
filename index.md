@@ -15,6 +15,9 @@ hero:
       link: /introduction
 
 features:
+  - title: 系统配置
+    details: 开发环境的系统配置教程
+    link: /系统配置/
   - title: 分子对接
     details: 分子对接
   - title: 动力学模拟
@@ -26,8 +29,7 @@ features:
   - title: 机器学习
     details: AI人工智能相关基础
     link: /机器学习/
-  - title: 科研数据分析
-    details: 数据分析教程
+
 
 
 ---

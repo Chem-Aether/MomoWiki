@@ -17,6 +17,7 @@ export default defineConfig({
        '/动力学模拟/': buildDirectoryTree('./动力学模拟'),
       '/药物设计概论/': buildDirectoryTree('./药物设计概论'),
       '/机器学习/': buildDirectoryTree('./机器学习'),
+      '/系统配置/': buildDirectoryTree('./系统配置'),
     },
     
     socialLinks: [
