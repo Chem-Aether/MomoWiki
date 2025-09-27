@@ -26,9 +26,9 @@ features:
   - title: 药物设计概论
     details: 生信、CADD、AIDD各领域介绍
     link: /药物设计概论/  
-  - title: 机器学习
+  - title: 人工智能入门
     details: AI人工智能相关基础
-    link: /机器学习/
+    link: /人工智能/
 
 
 
