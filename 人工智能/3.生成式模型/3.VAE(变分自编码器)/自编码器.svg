@@ -1,0 +1,815 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="_图层_1" data-name="图层 1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 942.93 495.4">
+  <defs>
+    <style>
+      .cls-1 {
+        clip-path: url(#clippath-51);
+      }
+
+      .cls-2 {
+        clip-path: url(#clippath-34);
+      }
+
+      .cls-3 {
+        clip-path: url(#clippath-38);
+      }
+
+      .cls-4 {
+        clip-path: url(#clippath-21);
+      }
+
+      .cls-5 {
+        clip-path: url(#clippath-6);
+      }
+
+      .cls-6 {
+        clip-path: url(#clippath-7);
+      }
+
+      .cls-7 {
+        clip-path: url(#clippath-17);
+      }
+
+      .cls-8 {
+        fill: #9abddf;
+      }
+
+      .cls-8, .cls-9, .cls-10, .cls-11 {
+        fill-rule: evenodd;
+      }
+
+      .cls-12 {
+        clip-path: url(#clippath-31);
+      }
+
+      .cls-13 {
+        clip-path: url(#clippath-15);
+      }
+
+      .cls-14 {
+        clip-path: url(#clippath-33);
+      }
+
+      .cls-15 {
+        clip-path: url(#clippath-61);
+      }
+
+      .cls-16 {
+        clip-path: url(#clippath-18);
+      }
+
+      .cls-17 {
+        clip-path: url(#clippath-47);
+      }
+
+      .cls-18 {
+        clip-path: url(#clippath-4);
+      }
+
+      .cls-19 {
+        clip-path: url(#clippath-71);
+      }
+
+      .cls-20 {
+        clip-path: url(#clippath-22);
+      }
+
+      .cls-21 {
+        clip-path: url(#clippath-23);
+      }
+
+      .cls-9 {
+        fill: #dfedd7;
+      }
+
+      .cls-22 {
+        clip-path: url(#clippath-54);
+      }
+
+      .cls-23 {
+        clip-path: url(#clippath-66);
+      }
+
+      .cls-24 {
+        clip-path: url(#clippath-9);
+      }
+
+      .cls-25 {
+        clip-path: url(#clippath-70);
+      }
+
+      .cls-26 {
+        clip-path: url(#clippath-10);
+      }
+
+      .cls-27 {
+        stroke-dasharray: 10.1 10.1;
+      }
+
+      .cls-27, .cls-28, .cls-29, .cls-30, .cls-31, .cls-32, .cls-33, .cls-34, .cls-35, .cls-36 {
+        fill: none;
+      }
+
+      .cls-27, .cls-28, .cls-30, .cls-31, .cls-33, .cls-34, .cls-35, .cls-36 {
+        stroke-miterlimit: 8;
+      }
+
+      .cls-27, .cls-28, .cls-30, .cls-31, .cls-34, .cls-36 {
+        stroke: #406cb4;
+      }
+
+      .cls-27, .cls-28, .cls-31, .cls-36 {
+        stroke-width: 2.25px;
+      }
+
+      .cls-37 {
+        clip-path: url(#clippath-42);
+      }
+
+      .cls-38 {
+        clip-path: url(#clippath-59);
+      }
+
+      .cls-28 {
+        stroke-dasharray: 10.73 10.73;
+      }
+
+      .cls-39 {
+        clip-path: url(#clippath-43);
+      }
+
+      .cls-40 {
+        clip-path: url(#clippath-64);
+      }
+
+      .cls-41 {
+        clip-path: url(#clippath-25);
+      }
+
+      .cls-42 {
+        clip-path: url(#clippath-27);
+      }
+
+      .cls-43 {
+        clip-path: url(#clippath-60);
+      }
+
+      .cls-44 {
+        clip-path: url(#clippath-11);
+      }
+
+      .cls-45 {
+        clip-path: url(#clippath-57);
+      }
+
+      .cls-46 {
+        clip-path: url(#clippath-36);
+      }
+
+      .cls-47 {
+        clip-path: url(#clippath-35);
+      }
+
+      .cls-48 {
+        clip-path: url(#clippath-48);
+      }
+
+      .cls-49 {
+        clip-path: url(#clippath-28);
+      }
+
+      .cls-30 {
+        stroke-width: 3px;
+      }
+
+      .cls-50 {
+        clip-path: url(#clippath-1);
+      }
+
+      .cls-51 {
+        clip-path: url(#clippath-56);
+      }
+
+      .cls-52 {
+        clip-path: url(#clippath-45);
+      }
+
+      .cls-53 {
+        clip-path: url(#clippath-46);
+      }
+
+      .cls-54 {
+        clip-path: url(#clippath-40);
+      }
+
+      .cls-55 {
+        clip-path: url(#clippath-5);
+      }
+
+      .cls-56 {
+        clip-path: url(#clippath-20);
+      }
+
+      .cls-57 {
+        clip-path: url(#clippath-8);
+      }
+
+      .cls-58 {
+        clip-path: url(#clippath-52);
+      }
+
+      .cls-59 {
+        fill: #fff;
+      }
+
+      .cls-59, .cls-60 {
+        font-family: DengXian, DengXian;
+        font-size: 18px;
+      }
+
+      .cls-61 {
+        clip-path: url(#clippath-41);
+      }
+
+      .cls-62 {
+        clip-path: url(#clippath-67);
+      }
+
+      .cls-63 {
+        clip-path: url(#clippath-3);
+      }
+
+      .cls-64 {
+        clip-path: url(#clippath-26);
+      }
+
+      .cls-65 {
+        clip-path: url(#clippath-12);
+      }
+
+      .cls-66 {
+        clip-path: url(#clippath-50);
+      }
+
+      .cls-60 {
+        fill: #040000;
+      }
+
+      .cls-67 {
+        clip-path: url(#clippath-14);
+      }
+
+      .cls-32 {
+        clip-rule: evenodd;
+      }
+
+      .cls-68 {
+        clip-path: url(#clippath-30);
+      }
+
+      .cls-69 {
+        clip-path: url(#clippath-19);
+      }
+
+      .cls-70 {
+        clip-path: url(#clippath-32);
+      }
+
+      .cls-71 {
+        clip-path: url(#clippath-55);
+      }
+
+      .cls-33 {
+        stroke: #142b4f;
+      }
+
+      .cls-72 {
+        clip-path: url(#clippath-53);
+      }
+
+      .cls-73 {
+        clip-path: url(#clippath-39);
+      }
+
+      .cls-34 {
+        stroke-width: 6px;
+      }
+
+      .cls-35 {
+        stroke: #040000;
+        stroke-width: 1.5px;
+      }
+
+      .cls-74 {
+        clip-path: url(#clippath-16);
+      }
+
+      .cls-75 {
+        clip-path: url(#clippath-2);
+      }
+
+      .cls-76 {
+        clip-path: url(#clippath-29);
+      }
+
+      .cls-77 {
+        clip-path: url(#clippath-49);
+      }
+
+      .cls-78 {
+        clip-path: url(#clippath-37);
+      }
+
+      .cls-79 {
+        clip-path: url(#clippath-58);
+      }
+
+      .cls-80 {
+        clip-path: url(#clippath-13);
+      }
+
+      .cls-10 {
+        fill: #406cb4;
+      }
+
+      .cls-81 {
+        clip-path: url(#clippath-63);
+      }
+
+      .cls-82 {
+        clip-path: url(#clippath-24);
+      }
+
+      .cls-83 {
+        clip-path: url(#clippath);
+      }
+
+      .cls-11 {
+        fill: #a4ca8b;
+      }
+
+      .cls-84 {
+        clip-path: url(#clippath-68);
+      }
+
+      .cls-36 {
+        stroke-dasharray: 10.74 10.74;
+      }
+
+      .cls-85 {
+        clip-path: url(#clippath-65);
+      }
+
+      .cls-86 {
+        clip-path: url(#clippath-44);
+      }
+
+      .cls-87 {
+        fill: #d8e1f1;
+      }
+
+      .cls-88 {
+        clip-path: url(#clippath-62);
+      }
+
+      .cls-89 {
+        clip-path: url(#clippath-69);
+      }
+    </style>
+    <clipPath id="clippath">
+      <polygon class="cls-32" points="47.51 502.14 899.75 502.14 899.75 -3.66 47.51 -3.66 47.51 502.14 47.51 502.14"/>
+    </clipPath>
+    <clipPath id="clippath-1">
+      <rect class="cls-29" x="47.51" y="-3.66" width="852.24" height="505.8"/>
+    </clipPath>
+    <clipPath id="clippath-2">
+      <polygon class="cls-32" points="47.51 502.14 899.75 502.14 899.75 -3.66 47.51 -3.66 47.51 502.14 47.51 502.14"/>
+    </clipPath>
+    <clipPath id="clippath-3">
+      <polygon class="cls-32" points="47.51 502.14 899.75 502.14 899.75 -3.66 47.51 -3.66 47.51 502.14 47.51 502.14"/>
+    </clipPath>
+    <clipPath id="clippath-4">
+      <rect class="cls-29" x="47.51" y="-3.66" width="852.24" height="505.8"/>
+    </clipPath>
+    <clipPath id="clippath-5">
+      <polygon class="cls-32" points="47.51 502.14 899.75 502.14 899.75 -3.66 47.51 -3.66 47.51 502.14 47.51 502.14"/>
+    </clipPath>
+    <clipPath id="clippath-6">
+      <polygon class="cls-32" points="47.51 502.14 899.75 502.14 899.75 -3.66 47.51 -3.66 47.51 502.14 47.51 502.14"/>
+    </clipPath>
+    <clipPath id="clippath-7">
+      <rect class="cls-29" x="47.51" y="-3.66" width="852.24" height="505.8"/>
+    </clipPath>
+    <clipPath id="clippath-8">
+      <polygon class="cls-32" points="47.51 502.14 899.75 502.14 899.75 -3.66 47.51 -3.66 47.51 502.14 47.51 502.14"/>
+    </clipPath>
+    <clipPath id="clippath-9">
+      <polygon class="cls-32" points="47.51 502.14 899.75 502.14 899.75 -3.66 47.51 -3.66 47.51 502.14 47.51 502.14"/>
+    </clipPath>
+    <clipPath id="clippath-10">
+      <polygon class="cls-32" points="47.51 502.14 899.75 502.14 899.75 -3.66 47.51 -3.66 47.51 502.14 47.51 502.14"/>
+    </clipPath>
+    <clipPath id="clippath-11">
+      <polygon class="cls-32" points="47.51 502.14 899.75 502.14 899.75 -3.66 47.51 -3.66 47.51 502.14 47.51 502.14"/>
+    </clipPath>
+    <clipPath id="clippath-12">
+      <polygon class="cls-32" points="47.51 502.14 899.75 502.14 899.75 -3.66 47.51 -3.66 47.51 502.14 47.51 502.14"/>
+    </clipPath>
+    <clipPath id="clippath-13">
+      <polygon class="cls-32" points="47.51 502.14 899.75 502.14 899.75 -3.66 47.51 -3.66 47.51 502.14 47.51 502.14"/>
+    </clipPath>
+    <clipPath id="clippath-14">
+      <rect class="cls-29" x="47.51" y="-3.66" width="852.24" height="505.8"/>
+    </clipPath>
+    <clipPath id="clippath-15">
+      <polygon class="cls-32" points="47.51 502.14 899.75 502.14 899.75 -3.66 47.51 -3.66 47.51 502.14 47.51 502.14"/>
+    </clipPath>
+    <clipPath id="clippath-16">
+      <rect class="cls-29" x="47.51" y="-3.66" width="852.24" height="505.8"/>
+    </clipPath>
+    <clipPath id="clippath-17">
+      <polygon class="cls-32" points="47.51 502.14 899.75 502.14 899.75 -3.66 47.51 -3.66 47.51 502.14 47.51 502.14"/>
+    </clipPath>
+    <clipPath id="clippath-18">
+      <rect class="cls-29" x="47.51" y="-3.66" width="852.24" height="505.8"/>
+    </clipPath>
+    <clipPath id="clippath-19">
+      <polygon class="cls-32" points="47.51 502.14 899.75 502.14 899.75 -3.66 47.51 -3.66 47.51 502.14 47.51 502.14"/>
+    </clipPath>
+    <clipPath id="clippath-20">
+      <polygon class="cls-32" points="47.51 502.14 899.75 502.14 899.75 -3.66 47.51 -3.66 47.51 502.14 47.51 502.14"/>
+    </clipPath>
+    <clipPath id="clippath-21">
+      <rect class="cls-29" x="47.51" y="-3.66" width="852.24" height="505.8"/>
+    </clipPath>
+    <clipPath id="clippath-22">
+      <polygon class="cls-32" points="47.51 502.14 899.75 502.14 899.75 -3.66 47.51 -3.66 47.51 502.14 47.51 502.14"/>
+    </clipPath>
+    <clipPath id="clippath-23">
+      <rect class="cls-29" x="47.51" y="-3.66" width="852.24" height="505.8"/>
+    </clipPath>
+    <clipPath id="clippath-24">
+      <polygon class="cls-32" points="47.51 502.14 899.75 502.14 899.75 -3.66 47.51 -3.66 47.51 502.14 47.51 502.14"/>
+    </clipPath>
+    <clipPath id="clippath-25">
+      <polygon class="cls-32" points="47.51 502.14 899.75 502.14 899.75 -3.66 47.51 -3.66 47.51 502.14 47.51 502.14"/>
+    </clipPath>
+    <clipPath id="clippath-26">
+      <rect class="cls-29" x="47.51" y="-3.66" width="852.24" height="505.8"/>
+    </clipPath>
+    <clipPath id="clippath-27">
+      <polygon class="cls-32" points="47.51 502.14 899.75 502.14 899.75 -3.66 47.51 -3.66 47.51 502.14 47.51 502.14"/>
+    </clipPath>
+    <clipPath id="clippath-28">
+      <rect class="cls-29" x="47.51" y="-3.66" width="852.24" height="505.8"/>
+    </clipPath>
+    <clipPath id="clippath-29">
+      <polygon class="cls-32" points="47.51 502.14 899.75 502.14 899.75 -3.66 47.51 -3.66 47.51 502.14 47.51 502.14"/>
+    </clipPath>
+    <clipPath id="clippath-30">
+      <polygon class="cls-32" points="47.51 502.14 899.75 502.14 899.75 -3.66 47.51 -3.66 47.51 502.14 47.51 502.14"/>
+    </clipPath>
+    <clipPath id="clippath-31">
+      <rect class="cls-29" x="47.51" y="-3.66" width="852.24" height="505.8"/>
+    </clipPath>
+    <clipPath id="clippath-32">
+      <polygon class="cls-32" points="47.51 502.14 899.75 502.14 899.75 -3.66 47.51 -3.66 47.51 502.14 47.51 502.14"/>
+    </clipPath>
+    <clipPath id="clippath-33">
+      <polygon class="cls-32" points="47.51 502.14 899.75 502.14 899.75 -3.66 47.51 -3.66 47.51 502.14 47.51 502.14"/>
+    </clipPath>
+    <clipPath id="clippath-34">
+      <rect class="cls-29" x="47.51" y="-3.66" width="852.24" height="505.8"/>
+    </clipPath>
+    <clipPath id="clippath-35">
+      <polygon class="cls-32" points="47.51 502.14 899.75 502.14 899.75 -3.66 47.51 -3.66 47.51 502.14 47.51 502.14"/>
+    </clipPath>
+    <clipPath id="clippath-36">
+      <polygon class="cls-32" points="47.51 502.14 899.75 502.14 899.75 -3.66 47.51 -3.66 47.51 502.14 47.51 502.14"/>
+    </clipPath>
+    <clipPath id="clippath-37">
+      <polygon class="cls-32" points="47.51 502.14 899.75 502.14 899.75 -3.66 47.51 -3.66 47.51 502.14 47.51 502.14"/>
+    </clipPath>
+    <clipPath id="clippath-38">
+      <polygon class="cls-32" points="47.51 502.14 899.75 502.14 899.75 -3.66 47.51 -3.66 47.51 502.14 47.51 502.14"/>
+    </clipPath>
+    <clipPath id="clippath-39">
+      <rect class="cls-29" x="47.51" y="-3.66" width="852.24" height="505.8"/>
+    </clipPath>
+    <clipPath id="clippath-40">
+      <polygon class="cls-32" points="47.51 502.14 899.75 502.14 899.75 -3.66 47.51 -3.66 47.51 502.14 47.51 502.14"/>
+    </clipPath>
+    <clipPath id="clippath-41">
+      <rect class="cls-29" x="805.66" y="126.54" width="93.72" height="37.92"/>
+    </clipPath>
+    <clipPath id="clippath-42">
+      <polygon class="cls-32" points="377.2 476.34 898.24 476.34 898.24 309.9 377.2 309.9 377.2 476.34 377.2 476.34"/>
+    </clipPath>
+    <clipPath id="clippath-43">
+      <polygon class="cls-32" points="377.2 476.34 898.24 476.34 898.24 309.9 377.2 309.9 377.2 476.34 377.2 476.34"/>
+    </clipPath>
+    <clipPath id="clippath-44">
+      <polygon class="cls-32" points="377.2 476.34 898.24 476.34 898.24 309.9 377.2 309.9 377.2 476.34 377.2 476.34"/>
+    </clipPath>
+    <clipPath id="clippath-45">
+      <rect class="cls-29" x="377.2" y="309.9" width="521.04" height="166.44"/>
+    </clipPath>
+    <clipPath id="clippath-46">
+      <polygon class="cls-32" points="377.2 476.34 898.24 476.34 898.24 309.9 377.2 309.9 377.2 476.34 377.2 476.34"/>
+    </clipPath>
+    <clipPath id="clippath-47">
+      <rect class="cls-29" x="377.2" y="309.9" width="521.04" height="166.44"/>
+    </clipPath>
+    <clipPath id="clippath-48">
+      <polygon class="cls-32" points="377.2 476.34 898.24 476.34 898.24 309.9 377.2 309.9 377.2 476.34 377.2 476.34"/>
+    </clipPath>
+    <clipPath id="clippath-49">
+      <polygon class="cls-32" points="377.2 476.34 898.24 476.34 898.24 309.9 377.2 309.9 377.2 476.34 377.2 476.34"/>
+    </clipPath>
+    <clipPath id="clippath-50">
+      <rect class="cls-29" x="377.2" y="309.9" width="521.04" height="166.44"/>
+    </clipPath>
+    <clipPath id="clippath-51">
+      <polygon class="cls-32" points="377.2 476.34 898.24 476.34 898.24 309.9 377.2 309.9 377.2 476.34 377.2 476.34"/>
+    </clipPath>
+    <clipPath id="clippath-52">
+      <rect class="cls-29" x="377.2" y="309.9" width="521.04" height="166.44"/>
+    </clipPath>
+    <clipPath id="clippath-53">
+      <polygon class="cls-32" points="377.2 476.34 898.24 476.34 898.24 309.9 377.2 309.9 377.2 476.34 377.2 476.34"/>
+    </clipPath>
+    <clipPath id="clippath-54">
+      <polygon class="cls-32" points="377.2 476.34 898.24 476.34 898.24 309.9 377.2 309.9 377.2 476.34 377.2 476.34"/>
+    </clipPath>
+    <clipPath id="clippath-55">
+      <rect class="cls-29" x="377.2" y="309.9" width="521.04" height="166.44"/>
+    </clipPath>
+    <clipPath id="clippath-56">
+      <polygon class="cls-32" points="377.2 476.34 898.24 476.34 898.24 309.9 377.2 309.9 377.2 476.34 377.2 476.34"/>
+    </clipPath>
+    <clipPath id="clippath-57">
+      <rect class="cls-29" x="377.2" y="309.9" width="521.04" height="166.44"/>
+    </clipPath>
+    <clipPath id="clippath-58">
+      <polygon class="cls-32" points="377.2 476.34 898.24 476.34 898.24 309.9 377.2 309.9 377.2 476.34 377.2 476.34"/>
+    </clipPath>
+    <clipPath id="clippath-59">
+      <polygon class="cls-32" points="377.2 476.34 898.24 476.34 898.24 309.9 377.2 309.9 377.2 476.34 377.2 476.34"/>
+    </clipPath>
+    <clipPath id="clippath-60">
+      <rect class="cls-29" x="377.2" y="309.9" width="521.04" height="166.44"/>
+    </clipPath>
+    <clipPath id="clippath-61">
+      <polygon class="cls-32" points="377.2 476.34 898.24 476.34 898.24 309.9 377.2 309.9 377.2 476.34 377.2 476.34"/>
+    </clipPath>
+    <clipPath id="clippath-62">
+      <rect class="cls-29" x="377.2" y="309.9" width="521.04" height="166.44"/>
+    </clipPath>
+    <clipPath id="clippath-63">
+      <polygon class="cls-32" points="377.2 476.34 898.24 476.34 898.24 309.9 377.2 309.9 377.2 476.34 377.2 476.34"/>
+    </clipPath>
+    <clipPath id="clippath-64">
+      <polygon class="cls-32" points="377.2 476.34 898.24 476.34 898.24 309.9 377.2 309.9 377.2 476.34 377.2 476.34"/>
+    </clipPath>
+    <clipPath id="clippath-65">
+      <polygon class="cls-32" points="377.2 476.34 898.24 476.34 898.24 309.9 377.2 309.9 377.2 476.34 377.2 476.34"/>
+    </clipPath>
+    <clipPath id="clippath-66">
+      <polygon class="cls-32" points="377.2 476.34 898.24 476.34 898.24 309.9 377.2 309.9 377.2 476.34 377.2 476.34"/>
+    </clipPath>
+    <clipPath id="clippath-67">
+      <rect class="cls-29" x="377.2" y="309.9" width="521.04" height="166.44"/>
+    </clipPath>
+    <clipPath id="clippath-68">
+      <polygon class="cls-32" points="377.2 476.34 898.24 476.34 898.24 309.9 377.2 309.9 377.2 476.34 377.2 476.34"/>
+    </clipPath>
+    <clipPath id="clippath-69">
+      <rect class="cls-29" x="377.2" y="309.9" width="521.04" height="166.44"/>
+    </clipPath>
+    <clipPath id="clippath-70">
+      <polygon class="cls-32" points="377.2 476.34 898.24 476.34 898.24 309.9 377.2 309.9 377.2 476.34 377.2 476.34"/>
+    </clipPath>
+    <clipPath id="clippath-71">
+      <rect class="cls-29" x="377.2" y="309.9" width="521.04" height="166.44"/>
+    </clipPath>
+  </defs>
+  <polygon class="cls-10" points="209.87 92.46 265.43 114.9 265.43 169.14 209.87 191.58 209.87 92.46 209.87 92.46"/>
+  <polygon class="cls-33" points="209.87 92.46 265.43 114.9 265.43 169.14 209.87 191.58 209.87 92.46 209.87 92.46"/>
+  <g class="cls-83">
+    <g class="cls-50">
+      <text class="cls-59" transform="translate(227.44 114.93) rotate(90)"><tspan x="0" y="0">编码器</tspan></text>
+    </g>
+    <g class="cls-75">
+      <polygon class="cls-8" points="502.79 86.1 447.23 108.54 447.23 162.66 502.79 185.1 502.79 86.1 502.79 86.1"/>
+      <polygon class="cls-33" points="502.79 86.1 447.23 108.54 447.23 162.66 502.79 185.1 502.79 86.1 502.79 86.1"/>
+      <g class="cls-63">
+        <g class="cls-18">
+          <text class="cls-59" transform="translate(485.2 162.66) rotate(-90)"><tspan x="0" y="0">解码器</tspan></text>
+        </g>
+        <g class="cls-55">
+          <polygon class="cls-33" points="341.39 86.1 371.27 86.1 371.27 191.58 341.39 191.58 341.39 86.1 341.39 86.1"/>
+          <g class="cls-5">
+            <g class="cls-6">
+              <text class="cls-60" transform="translate(352.16 144.8)"><tspan x="0" y="0">z</tspan></text>
+            </g>
+            <g class="cls-57">
+              <line class="cls-34" x1="116.03" y1="142.38" x2="186.57" y2="142.38"/>
+              <polygon class="cls-10" points="183.57 133.38 201.57 142.38 183.57 151.38 183.57 133.38 183.57 133.38"/>
+              <g class="cls-24">
+                <line class="cls-34" x1="509.63" y1="142.38" x2="580.17" y2="142.38"/>
+                <polygon class="cls-10" points="577.17 133.38 595.17 142.38 577.17 151.38 577.17 133.38 577.17 133.38"/>
+                <g class="cls-26">
+                  <line class="cls-34" x1="270.71" y1="142.38" x2="319.87" y2="142.38"/>
+                  <polygon class="cls-10" points="316.87 133.38 334.87 142.38 316.87 151.38 316.87 133.38 316.87 133.38"/>
+                  <g class="cls-44">
+                    <line class="cls-34" x1="378.71" y1="142.38" x2="427.87" y2="142.38"/>
+                    <polygon class="cls-10" points="424.87 133.38 442.87 142.38 424.87 151.38 424.87 133.38 424.87 133.38"/>
+                    <g class="cls-65">
+                      <g>
+                        <polyline class="cls-31" points="541.69 141.04 540.62 141.04 540.62 136.04"/>
+                        <line class="cls-28" x1="540.62" y1="125.31" x2="540.62" y2="44.84"/>
+                        <polyline class="cls-31" points="540.62 39.47 540.62 34.47 535.62 34.47"/>
+                        <line class="cls-27" x1="525.52" y1="34.47" x2="247.7" y2="34.47"/>
+                        <polyline class="cls-31" points="242.65 34.47 237.65 34.47 237.65 39.47"/>
+                        <line class="cls-36" x1="237.65" y1="50.21" x2="237.65" y2="87.8"/>
+                        <line class="cls-31" x1="237.65" y1="93.17" x2="237.65" y2="98.17"/>
+                      </g>
+                      <polygon class="cls-10" points="241.02 97.05 237.65 103.8 234.27 97.05 241.02 97.05 241.02 97.05"/>
+                      <g class="cls-80">
+                        <g class="cls-67">
+                          <text class="cls-60" transform="translate(319.88 18.59)"><tspan x="0" y="0">反向传播、重构误差</tspan></text>
+                        </g>
+                        <g class="cls-13">
+                          <g class="cls-74">
+                            <text class="cls-60" transform="translate(329.23 212.03)"><tspan x="0" y="0">隐变量</tspan></text>
+                          </g>
+                          <g class="cls-7">
+                            <g class="cls-16">
+                              <text class="cls-60" transform="translate(302.23 233.62)"><tspan x="0" y="0">（特征提取）</tspan></text>
+                            </g>
+                            <g class="cls-69">
+                              <rect class="cls-87" x="48.47" y="121.02" width="56.28" height="56.4" rx="9.38" ry="9.38"/>
+                              <g class="cls-56">
+                                <g class="cls-4">
+                                  <text class="cls-60" transform="translate(58.37 144.19)"><tspan x="0" y="0">输入</tspan></text>
+                                </g>
+                                <g class="cls-20">
+                                  <g class="cls-21">
+                                    <text class="cls-60" transform="translate(58.37 165.8)"><tspan x="0" y="0">数据</tspan></text>
+                                  </g>
+                                  <g class="cls-82">
+                                    <rect class="cls-87" x="601.91" y="121.02" width="56.28" height="56.4" rx="9.38" ry="9.38"/>
+                                    <g class="cls-41">
+                                      <g class="cls-64">
+                                        <text class="cls-60" transform="translate(611.84 144.19)"><tspan x="0" y="0">输出</tspan></text>
+                                      </g>
+                                      <g class="cls-42">
+                                        <g class="cls-49">
+                                          <text class="cls-60" transform="translate(611.84 165.8)"><tspan x="0" y="0">数据</tspan></text>
+                                        </g>
+                                        <g class="cls-76">
+                                          <polygon class="cls-10" points="209.87 341.34 265.43 363.78 265.43 418.02 209.87 440.46 209.87 341.34 209.87 341.34"/>
+                                          <polygon class="cls-33" points="209.87 341.34 265.43 363.78 265.43 418.02 209.87 440.46 209.87 341.34 209.87 341.34"/>
+                                          <g class="cls-68">
+                                            <g class="cls-12">
+                                              <text class="cls-59" transform="translate(227.44 363.85) rotate(90)"><tspan x="0" y="0">编码器</tspan></text>
+                                            </g>
+                                            <g class="cls-70">
+                                              <polygon class="cls-33" points="341.39 334.98 371.27 334.98 371.27 440.46 341.39 440.46 341.39 334.98 341.39 334.98"/>
+                                              <g class="cls-14">
+                                                <g class="cls-2">
+                                                  <text class="cls-60" transform="translate(352.16 393.72)"><tspan x="0" y="0">z</tspan></text>
+                                                </g>
+                                                <g class="cls-47">
+                                                  <line class="cls-34" x1="116.03" y1="391.26" x2="186.57" y2="391.26"/>
+                                                  <polygon class="cls-10" points="183.57 382.26 201.57 391.26 183.57 400.26 183.57 382.26 183.57 382.26"/>
+                                                  <g class="cls-46">
+                                                    <line class="cls-34" x1="270.71" y1="391.26" x2="319.87" y2="391.26"/>
+                                                    <polygon class="cls-10" points="316.87 382.26 334.87 391.26 316.87 400.26 316.87 382.26 316.87 382.26"/>
+                                                    <g class="cls-78">
+                                                      <rect class="cls-87" x="48.47" y="370.02" width="56.28" height="56.28" rx="9.38" ry="9.38"/>
+                                                      <g class="cls-3">
+                                                        <g class="cls-73">
+                                                          <text class="cls-60" transform="translate(58.37 393.12)"><tspan x="0" y="0">输入</tspan></text>
+                                                        </g>
+                                                        <g class="cls-54">
+                                                          <rect class="cls-29" x="47.51" y="-3.66" width="852.24" height="505.8"/>
+                                                        </g>
+                                                      </g>
+                                                    </g>
+                                                  </g>
+                                                </g>
+                                              </g>
+                                            </g>
+                                          </g>
+                                        </g>
+                                      </g>
+                                    </g>
+                                  </g>
+                                </g>
+                              </g>
+                            </g>
+                          </g>
+                        </g>
+                      </g>
+                    </g>
+                  </g>
+                </g>
+              </g>
+            </g>
+          </g>
+        </g>
+      </g>
+    </g>
+  </g>
+  <text class="cls-60" transform="translate(328.21 463.47)"><tspan x="0" y="0">隐变量</tspan></text>
+  <text class="cls-60" transform="translate(301.21 485.06)"><tspan x="0" y="0">（特征提取）</tspan></text>
+  <g class="cls-61">
+    <text class="cls-60" transform="translate(816.52 148.84)"><tspan x="0" y="0">训练过程</tspan></text>
+  </g>
+  <line class="cls-35" x1="11.45" y1="271.19" x2="931.05" y2="271.19"/>
+  <g>
+    <line class="cls-34" x1="377.2" y1="390.66" x2="426.36" y2="390.66"/>
+    <polygon class="cls-10" points="423.36 381.66 441.36 390.66 423.36 399.66 423.36 381.66 423.36 381.66"/>
+    <g class="cls-37">
+      <path class="cls-30" d="M471.82,456c-6.3,0-11.4-3.08-11.4-6.89v-50.07c0-3.8-5.1-6.89-11.4-6.89,6.3,0,11.4-3.08,11.4-6.89v-50.07c0-3.8,5.1-6.89,11.4-6.89"/>
+      <g class="cls-39">
+        <polygon class="cls-9" points="479.2 311.7 578.56 311.7 578.56 340.74 479.2 340.74 479.2 311.7 479.2 311.7"/>
+        <g class="cls-86">
+          <g class="cls-52">
+            <text class="cls-60" transform="translate(486.4 332.1)"><tspan x="0" y="0">+</tspan></text>
+          </g>
+          <g class="cls-53">
+            <g class="cls-17">
+              <text class="cls-60" transform="translate(498.4 332.1)"><tspan x="0" y="0">分类回归</tspan></text>
+            </g>
+            <g class="cls-48">
+              <polygon class="cls-11" points="479.2 356.22 578.56 356.22 578.56 385.38 479.2 385.38 479.2 356.22 479.2 356.22"/>
+              <g class="cls-77">
+                <g class="cls-66">
+                  <text class="cls-60" transform="translate(486.4 376.66)"><tspan x="0" y="0">+</tspan></text>
+                </g>
+                <g class="cls-1">
+                  <g class="cls-58">
+                    <text class="cls-60" transform="translate(498.4 376.66)"><tspan x="0" y="0">聚类检测</tspan></text>
+                  </g>
+                  <g class="cls-72">
+                    <polygon class="cls-9" points="479.2 401.58 578.56 401.58 578.56 430.62 479.2 430.62 479.2 401.58 479.2 401.58"/>
+                    <g class="cls-22">
+                      <g class="cls-71">
+                        <text class="cls-60" transform="translate(486.4 421.92)"><tspan x="0" y="0">+</tspan></text>
+                      </g>
+                      <g class="cls-51">
+                        <g class="cls-45">
+                          <text class="cls-60" transform="translate(498.4 421.92)"><tspan x="0" y="0">生成模型</tspan></text>
+                        </g>
+                        <g class="cls-79">
+                          <polygon class="cls-11" points="479.2 440.22 578.56 440.22 578.56 469.26 479.2 469.26 479.2 440.22 479.2 440.22"/>
+                          <g class="cls-38">
+                            <g class="cls-43">
+                              <text class="cls-60" transform="translate(486.4 460.63)"><tspan x="0" y="0">+</tspan></text>
+                            </g>
+                            <g class="cls-15">
+                              <g class="cls-88">
+                                <text class="cls-60" transform="translate(498.4 460.63)"><tspan x="0" y="0">推荐系统</tspan></text>
+                              </g>
+                              <g class="cls-81">
+                                <path class="cls-30" d="M582.22,456c6.3,0,11.4-3.08,11.4-6.89v-50.07c0-3.8,5.1-6.89,11.4-6.89-6.3,0-11.4-3.08-11.4-6.89v-50.07c0-3.8-5.1-6.89-11.4-6.89"/>
+                                <g class="cls-40">
+                                  <line class="cls-34" x1="608.68" y1="390.66" x2="679.23" y2="390.66"/>
+                                  <polygon class="cls-10" points="676.23 381.66 694.23 390.66 676.23 399.66 676.23 381.66 676.23 381.66"/>
+                                  <g class="cls-85">
+                                    <rect class="cls-87" x="700.96" y="369.42" width="56.28" height="56.28" rx="9.38" ry="9.38"/>
+                                    <g class="cls-23">
+                                      <g class="cls-62">
+                                        <text class="cls-60" transform="translate(710.93 392.52)"><tspan x="0" y="0">输出</tspan></text>
+                                      </g>
+                                      <g class="cls-84">
+                                        <g class="cls-89">
+                                          <text class="cls-60" transform="translate(710.93 414.13)"><tspan x="0" y="0">数据</tspan></text>
+                                        </g>
+                                        <g class="cls-25">
+                                          <g class="cls-19">
+                                            <text class="cls-60" transform="translate(815.38 392.98)"><tspan x="0" y="0">推理过程</tspan></text>
+                                          </g>
+                                        </g>
+                                      </g>
+                                    </g>
+                                  </g>
+                                </g>
+                              </g>
+                            </g>
+                          </g>
+                        </g>
+                      </g>
+                    </g>
+                  </g>
+                </g>
+              </g>
+            </g>
+          </g>
+        </g>
+      </g>
+    </g>
+  </g>
+</svg>
