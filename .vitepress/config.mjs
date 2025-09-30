@@ -18,6 +18,7 @@ export default defineConfig({
       '/药物设计概论/': buildDirectoryTree('./药物设计概论'),
       '/人工智能/': buildDirectoryTree('./人工智能'),
       '/系统配置/': buildDirectoryTree('./系统配置'),
+      '/计算机体系基础/': buildDirectoryTree('./计算机体系基础'),
     },
     
     socialLinks: [
