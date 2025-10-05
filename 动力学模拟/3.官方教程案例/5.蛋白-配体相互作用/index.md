@@ -1,12 +1,12 @@
 # 案例五 蛋白-配体相互作用
-本案例将指导用户完成设置模拟系统的过程，该系统包含蛋白质（T4 溶菌酶 L99A/M102Q）与配体的复合物。本教程特别关注与处理配体相关的问题，前提是用户熟悉基本的GROMACS命令和拓扑的内容。
+本文以gromacs官方教程五的内容为基础，将指导用户完成设置模拟系统的过程，该系统包含蛋白质-配体的复合物。通过教程将学习到动力学模拟及数据分析的全流程操作。
 
 ![](root.png)
 
 ## 准备文件
 分子对接一般负责寻找小分子配体和大分子受体的某个相互结合位点，相当于单帧图片；而动力学模拟则是在此基础上计算模拟配体-受体的动态相互作用过程，因此，动力学模拟往往是在分子对接完成后，对对接复合物进行操作的。
 
-这里的示例大蛋白选用3HTB蛋白，在RCSB数据库中下载蛋白文件[3THB](https://www.rcsb.org/structure/3HTB)，提前将蛋白质进行加氢、去水、去配体操作，在日常操作中，最好选择使用分子对接后的大蛋白和小分子，分别为PDB和MOL2文件。
+这里的示例大蛋白选用3HTB蛋白，在RCSB数据库中下载蛋白文件[3THB](https://www.rcsb.org/structure/3HTB)，提前将蛋白质进行加氢、去水、去配体操作，在日常操作中，最好选择使用分子对接后的大蛋白和小分子，分别为`PDB`和`MOL2`文件。
 
 建议工作中蛋白质统一命名为`protein.pdb`，小分子统一命名为`mol.mol2`
 
@@ -39,7 +39,7 @@ From '/usr/local/gromacs/share/gromacs/top':
 16: OPLS-AA/L all-atom force field (2001 aminoacid dihedrals)
 ```
 
-在此过程中可能会报错，提示H原子类型不匹配或氢原子命名错误，这时可以选择使用-ignh命令，忽视原有氢原子，此时gromacs会自动加全氢
+在此过程中可能会报错，提示H原子类型不匹配或氢原子命名错误，这时可以选择使用`-ignh`命令，忽视原有氢原子，此时gromacs会自动加全氢
 
 ```
 gmx pdb2gmx -f protein.pdb -o protein.gro -ter -ignh
@@ -47,14 +47,14 @@ gmx pdb2gmx -f protein.pdb -o protein.gro -ter -ignh
 
 在这一步里可能会出现`Total charge in system x.000 e`的提示，说明体系电荷不为零，在后续的溶剂化过程中为其添加抗衡离子即可。
 
-最终会生成拓`topol.top`拓扑文件，和大蛋白的`protein.gro`文件，该文件可以用pymol可视化预览。
+最终会生成拓`topol.top`拓扑文件，和大蛋白的`protein.gro`文件，该文件可以用`pymol`可视化预览。
 
 ![](protein.png)
 
 ## 小分子准备
-上步中拆分的小分子配体保存为`MOL2`格式，如果是`PDB`格式，则需要将其转化为`MOL2`格式，得到一个mol.mol2文件。
+上步中拆分的小分子配体保存为`MOL2`格式，如果是`PDB`格式，则需要将其转化为`MOL2`格式，得到一个`mol.mol2`文件。
 
-该文件只包含一个小分子，可以利用Pymol为其加氢，同时将`@<TRIPOS>MOLECULE`下的名称改为MOL，或其他统一名称，作为该配体的名称，同时确保`ATOM`列的MOL与该名称一致即可。
+该文件只包含一个小分子，可以利用`Pymol`为其加氢，同时将`@<TRIPOS>MOLECULE`下的名称改为**MOL**，或其他统一名称，作为该配体的名称，同时确保`ATOM`列的MOL与该名称一致即可。
 
 ```ts:line-numbers {}
 @<TRIPOS>MOLECULE
@@ -110,7 +110,7 @@ USER_CHARGES
 22 10 22 1
 ```
 
-该小分子mol2文件（邻丙基苯酚）可用pymol预览如下：
+该小分子`mol2`文件（邻丙基苯酚）可用`pymol`预览如下：
 ![](mol.png)
 
 
@@ -171,18 +171,18 @@ Gyas ROwers Mature At Cryogenic Speed
 ```
 
 
-添加完成后，可以使用pymol可视化观察`complex.gro`，应该可以看到大蛋白和小分子配体共存。
+添加完成后，可以使用`pymol`可视化观察`complex.gro`，应该可以看到大蛋白和小分子配体共存。
 ![](complex.png)
 
 ### 构建拓扑
 
-蛋白质的限制势itp文件在pdb2gmx的时候已经产生，但小分子的没有，genrestr是对输入的结构产生坐标或距离限制势itp文件（`posre_mol.itp`）的工具，接下来运行命令，进行限制势的产生：
+蛋白质的限制势`itp`文件在`pdb2gmx`的时候已经产生，但小分子的没有，`genrestr`是对输入的结构产生坐标或距离限制势`itp`文件（`posre_mol.itp`）的工具，接下来运行命令，进行限制势的产生：
 
 ```
 gmx genrestr -f mol.gro -o posre_mol.itp
 ```
 
-选择**组0**，system默认的位置限制势常数是1000kJ/mol/nm2，已经足够大。
+选择**组0**，`system`默认的位置限制势常数是$1000 kJ/mol/nm^2$，已经足够大。
 ```
 Reading structure file
 Select group to position restrain
@@ -216,9 +216,9 @@ Group     2 (            MOL) has    22 elements
 #endif // [!code warning]
 ```
 
-这样当mdp中使用define = -DPOSRES的时候配体的位置也会被限制。
+这样当`mdp`中使用`define = -DPOSRES`的时候配体的位置也会被限制。
 
-把配体的itp文件引入整体的拓扑文件`topol.top`，在引入的时候需要将小分子的`mol.itp`文件引入到蛋白质链之前，因为`mol.itp`最开头定义了[atomtypes]因此，这个itp要最优先被引入。
+把配体的itp文件引入整体的拓扑文件`topol.top`，在引入的时候需要将小分子的`mol.itp`文件引入到蛋白质链之前，因为`mol.itp`最开头定义了`[atomtypes]`因此，这个`itp`要最优先被引入。
 
 即，将下列黄色语句插入到引入蛋白质的`topol.itp`文件引入之前，最终顺序如下；
 
@@ -263,9 +263,9 @@ gmx editconf -f complex.gro -o complex_box.gro -bt dodecahedron -d 1.0
 ```
 gmx solvate -cp complex_box.gro -cs spc216.gro -o complex_SOL.gro -p topol.top
 ```
-这里的`-cs spc216.gro`可以不写，意思是默认选择GROMACS内置的预平衡的SPC水模型（216个水分子构成的立方盒子），默认是简单点电荷（SPC）水模型。其他可选溶剂如`tip3p.gro`、`tip4p.gro`等。
+这里的`-cs spc216.gro`可以不写，意思是默认选择GROMACS内置的预平衡的`SPC水模型`（216个水分子构成的立方盒子），默认是简单点电荷（SPC）水模型。其他可选溶剂如`tip3p.gro`、`tip4p.gro`等。
 
-注意这一步加水后有可能topol.top文件最后一行的SOL可能会串行，需要手动添加回车，避免其与`mol 1`连在同一行，容易在后续处理中报错。
+注意这一步加水后有可能`topol.top`文件最后一行的`SOL`可能会串行，需要手动添加回车，避免其与`mol 1`连在同一行，容易在后续处理中报错。
 
 这一步完成后的`topol.itp`文件末尾会增加数万个水分子：
 
@@ -277,7 +277,7 @@ MOL                 1
 SOL             12750   // [!code warning]
 ```
 
-最终得到的`complex_SOL.gro`文件可用pymol预览：
+最终得到的`complex_SOL.gro`文件可用`pymol`预览：
 ![](complex_SOL.png)
 
 ### 添加中和离子
@@ -310,7 +310,7 @@ pbc             = xyz 		; Periodic Boundary Conditions
 ```
 gmx grompp -f ions.mdp -c complex_SOL.gro -p topol.top -o ions.tpr -maxwarn 1
 ```
-这里如果警告较多可以将maxwarn的数值改大一些。
+这里如果警告较多可以将**maxwarn**的数值改大一些。
 
 最后为体系加离子，使得整个体系变为电中性：
 
@@ -320,7 +320,7 @@ gmx genion -s ions.tpr -p topol.top -o system.gro -neutral
 
 这里选择分组时选择 **SOL（15）** 对应的分组，产生的带有离子且电中性的体系为`system.gro`。同时可以额外使用`-pname NA -nname CL`来选择添加的阴阳离子类型，具体名称根据力场来选择。
 
-最终的结果为总拓扑文件`[ molecules ]`后出现对应数目的离子，同时使用pymol也观察到`system.gro`文件中加载了氯离子，离子数目应该和上文的电荷数`Total charge in system x.000 e`相对应：
+最终的结果为总拓扑文件`[ molecules ]`后出现对应数目的离子，同时使用`pymol`也观察到`system.gro`文件中加载了氯离子，离子数目应该和上文的电荷数`Total charge in system x.000 e`相对应：
 
 ```
 [ molecules ]
@@ -331,7 +331,7 @@ SOL             12744
 CL                  6  // [!code warning]
 ```
 
-最终得到的`system.gro`文件可以用pymol预览，看到已经成功添加了6个氯离子：
+最终得到的`system.gro`文件可以用`pymol`预览，看到已经成功添加了6个氯离子：
 ![](system.png)
 ## 能量最小化
 
@@ -392,7 +392,7 @@ gmx energy -f em.edr -o potential.xvg
 
 ## 平衡
 ### 约束配体
-为了约束配体，我们需要为其生成位置约束拓扑。首先，为 MOL 创建一个仅包含其非氢原子的索引组：
+为了约束配体，我们需要为其生成位置约束拓扑。首先，为 `MOL` 创建一个仅包含其非氢原子的索引组：
 ```
 gmx make_ndx -f mol.gro -o index_mol.ndx
 ```
@@ -403,7 +403,7 @@ gmx make_ndx -f mol.gro -o index_mol.ndx
  > 0 & ! a H*
  > q
 ```
-然后，执行 genrestr 模块并选择这个新创建的索引组（将是 index_mol.ndx 文件中的第 3 组）：
+然后，执行 `genrestr` 模块并选择这个新创建的索引组（将是 `index_mol.ndx` 文件中的第 3 组）：
 ```
 gmx genrestr -f mol.gro -n index_mol.ndx -o posre_mol.itp -fc 1000 1000 1000
 ```
@@ -475,7 +475,7 @@ gmx make_ndx -f em.gro -o index.ndx
  21 Water_and_ions      : 30870 atoms
 ```
 
-将 “Protein” 和 “MOL” 组与以下内容合并，输入"1 | 13"，再输入q退出：
+将 “Protein” 和 “MOL” 组与以下内容合并，输入"`1 | 13`"，再输入`q`退出：
 
 ```
 > 1 | 13
@@ -491,9 +491,9 @@ Merged two groups with OR: 2614 22 -> 2636
  22 Protein_MOL         :  2636 atoms  // [!code warning]
 ```
 
-该索引组的名称为`Protein_MOL`，应该确保名称和下面的.mdp文件相对应。
+该索引组的名称为`Protein_MOL`，应该确保名称和下面的`.mdp`文件相对应。
 
-为了确保名称一致，可以使用name命令更改名称,最后输入q，退出：
+为了确保名称一致，可以使用`name`命令更改名称,最后输入`q`，退出：
 
 ```
 Copied index group 1 'Protein'
@@ -591,7 +591,7 @@ Performance:       70.245        0.342
 
 ```
 
-下列命令输出NVT平衡图像，选择 **"15 0"  Temperature** ，并查看：
+下列命令输出`NVT`平衡图像，选择 **"15 0"  Temperature** ，并查看：
 
 ```
 gmx energy -f nvt.edr -o temperature.xvg
@@ -662,7 +662,7 @@ gmx grompp -f npt.mdp -c nvt.gro -t nvt.cpt -r nvt.gro -p topol.top -n index.ndx
 gmx mdrun -deffnm npt -v
 ```
 
-最终输出的npt状态如下：
+最终输出的`NPT`状态如下：
 
 ```
 step 50000, remaining wall clock time:     0 s
@@ -761,6 +761,11 @@ step 5000000, remaining wall clock time:     0 s
 Performance:       65.844        0.364
 ```
 
+若模拟计算中途中断，可使用`-cpi`在中断处续跑，其中`md_0.cpt`是中断前产生的文件：
+```
+gmx mdrun -deffnm md_0 -nb gpu -cpi md_0.cpt -v
+```
+
 ### 矫正轨迹
 
 ::: tip
@@ -796,11 +801,11 @@ gmx trjconv -s md_0.tpr -f md_0_center.xtc -o start.pdb -dump 0
 
 选择 **“0 System”** 进行输出，得到居中后的起始帧文件 `start.pdb`，它包含所有原子（蛋白、水、离子等），适合后续全体系分析或重启模拟。
 
-使用pymol可以可视化查看起始帧文件：
+使用`pymol`可以可视化查看起始帧文件：
 
 ![](start.png)
 
-执行下列命令，获得更平滑的可视化，同时执行旋转和平移拟合，消除分子整体平动和转动，使轨迹更适合分析（如 RMSD、RMSF 或可视化）：
+执行下列命令，获得更平滑的可视化，同时执行旋转和平移拟合，消除分子整体平动和转动，使轨迹更适合分析：
 
 ```
 gmx trjconv -s md_0.tpr -f md_0_center.xtc -o md_0_fit.xtc -fit rot+trans
@@ -808,11 +813,11 @@ gmx trjconv -s md_0.tpr -f md_0_center.xtc -o md_0_fit.xtc -fit rot+trans
 
 选择 **“4 Backbone”** 对蛋白质骨架进行最小二乘拟合，选择 **“0 System”** 进行输出，得到拟合后的轨迹文件 `md_0_fit.xtc`。
 
-利用VMD或pymol载入`md_0.gro`和`md_0_fit.xtc`轨迹文件，即可查看可视化动画：
+利用`VMD`或`pymol`载入`md_0.gro`和`md_0_fit.xtc`轨迹文件，即可查看可视化动画：
 
 ### 结构稳定性分析
 
-分子动力学（MD）模拟数据的数据分析主要包括 **结构稳定性分析** 和 **能量分析** ，涵盖 **RMSD、RMSF、Rg、氢键、SASA、自由能形貌图** 以及 **MMPBSA结合自由能计算** 和 **残基能量分解**，均可使用GROMACS和辅助工具（python）完成。
+分子动力学（MD）模拟数据的数据分析主要包括 **结构稳定性分析** 和 **能量分析** ，涵盖 **RMSD、RMSF、Rg、氢键、SASA、自由能形貌图** 以及 **MMPBSA结合自由能计算** 和 **残基能量分解**，均可使用GROMACS和辅助工具（python）完成，后文将详细介绍每部分的分析方法。
 
 #### **RMSD（均方根偏差）**
 **作用**：评估蛋白质整体结构的稳定性（相对于初始构象的偏差）。  
@@ -839,15 +844,15 @@ gmx rmsf -s md_0.tpr -f md_0_fit.xtc -o rmsf.xvg -res
 ![](rmsf.png)
 
 #### **B因子（温度因子，B-factor）**
-**作用**：在分子动力学（MD）模拟中表征原子位置波动性的重要指标，与实验结构（如X射线晶体学或冷冻电镜）中的B因子意义一致。
+**作用**：在分子动力学模拟中表征原子位置波动性的重要指标，与实验结构（如X射线晶体学或冷冻电镜）中的B因子意义一致。
 
-**命令**：下列命令计算原子均方波动（MSF）
+**命令**：
 
 ```bash
 gmx rmsf -s md_0.tpr -f md_0_fit.xtc -o rmsf_B.xvg -oq bfactor.pdb -res
 ```
 - **交互选择**：选择计算组（通常为 `Protein` 或 `Backbone`）。
-- **输出**：`-oq bfactor.pdb`：输出包含B因子的PDB文件，可直接用PyMOL/VMD可视化。
+- **输出**：`-oq bfactor.pdb`：输出包含B因子的PDB文件，可直接用`PyMOL`、`VMD`可视化。
 
 GROMACS的 `rmsf` 工具直接输出的 `bfactor.pdb` 已自动将RMSF（单位：nm）转换为B因子（单位：Å²）：
 $$
@@ -857,7 +862,7 @@ $$
 
 **可视化**：
 
-使用pymol打开`bfactor.pdb`文件后，输入以下命令：
+使用`pymol`打开`bfactor.pdb`文件后，输入以下命令：
 
 ```python
 spectrum b, blue_white_red, minimum=0, maximum=100
@@ -925,7 +930,13 @@ gmx sasa -s md_0.tpr -f md_0_fit.xtc -o sasa.xvg -tu ns
 #### **自由能形貌图（FEL）**
 **作用**：通过降维投影（如PCA）构建自由能景观。  
 **步骤**：
-将`rmsd.xvg`和`gyrate.xvg`的数据列合并在一起，并删除x、y、z三个分量的数据，只保留时间、rmsd、Rg三列数据，最终效果如下：
+在接下来的绘制中，需要先安装绘图工具，例如[DuIvyTools](https://duivytools.readthedocs.io/en/latest/index.html)，输入如下命令安装：
+
+```python
+pip install DuIvyTools
+```
+
+接下来需要处理文件，将`rmsd.xvg`和`gyrate.xvg`的数据列合并在一起，并删除x、y、z三个分量的数据，只保留时间、rmsd、Rg三列数据，保存至`RMSD_Rg.xvg`文件，最终文件的内容应该如下：
 
 ``` ts:line-numbers {}
 0 0.0005029 2.08542
@@ -952,7 +963,7 @@ gmx sasa -s md_0.tpr -f md_0_fit.xtc -o sasa.xvg -tu ns
 210 0.1314  2.118
 ```
 
-输入下列命令，得到`gibbs.xpm`文件，即为自由能结果
+输入下列命令，得到`gibbs.xpm`文件，即为自由能结果：
 ```bash
 gmx sham -f RMSD_Rg.xvg
 ```
@@ -965,19 +976,21 @@ dit xpm_show -f gibbs.xpm -x "RMSD (nm)" -y "Rg (nm)"
 dit xpm_show -f gibbs.xpm -eg plotly -m 3d -cmap spectral -x "RMSD (nm)" -y "Rg (nm)"
 ```
 
+![](自由能形貌图.png)
+
 #### 利用主成分绘制FEL
 
-一般来说利用主成分绘制FEL，也就是用`主成分1`和`主成分2`取代上文的rmsd和gyrate，后面的处理就都是一样的。
+一般来说利用主成分绘制FEL，也就是用`主成分1`和`主成分2`取代上文的`rmsd`和`gyrate`，后面的处理就都是一样的。
 
-要获得主成分，需要对轨迹进行主成分分析，gmx提供了covar命令和anaeig命令帮助我们进行相关分析。请一定注意要在PCA之前消除轨迹的平动和转动，以免分子的整体运动影响分子内部运动的分析。
+要获得主成分，需要对轨迹进行主成分分析，`gmx`提供了`covar`命令和`anaeig`命令帮助我们进行相关分析。请一定注意要在PCA之前消除轨迹的平动和转动，以免分子的整体运动影响分子内部运动的分析。
 
-covar命令的作用是对轨迹进行协方差矩阵和本征向量的计算：
+`covar`命令的作用是对轨迹进行协方差矩阵和本征向量的计算：
 
 ```
 gmx covar -s md_0.tpr -f md_0_fit.xtc -o eigenvalues.xvg -v eigenvectors.trr -xpma covapic.xpm
 ```
 
-按提示选择使用哪些原子做align，选**3 C-alpha**或者**4 backbone**，之后选择对哪些原子做PCA，也选C-alpha或者backbone。
+按提示选择使用哪些原子做align，选**3 C-alpha**或者**4 backbone**，之后选择对哪些原子做PCA，也选`C-alpha`或者`backbone`。
 
 `eigenvalues.xvg`里面记录了分析得出的多个本征值的序号和大小，对于FEL来说，我们通常希望前两个本征值的大小的和可以越大越好，这意味着前两个主成分就可以代表蛋白的大部分运动信息。
 
@@ -997,16 +1010,22 @@ gmx anaeig -s md_0.tpr -f md_0_fit.xtc -v eigenvectors.trr -first 2 -last 2 -pro
 gmx sham -tsham 310 -nlevels 100 -f pc12_sham.xvg -ls pc12_gibbs.xpm -g pc_12.log -lsh pc12_enthalpy.xpm -lss pc12_entropy.xpm
 ```
 
-生成的`pc12_gibbs.xpm`可视化之后如下：
+生成的`pc12_gibbs.xpm`可进行可视化：
+
+```bash
+dit xpm_show -f pc12_gibbs.xpm
+```
+
+![](PCA.svg)
 
 
-我们发现，通过前两个主成分做出来的FEL和通过RMSD、Gyrate做出来的FEL并不一样。是的，因为它们代表了蛋白不同尺度（或者方向）上的运动，对于蛋白的表示不同，得到的FEL也会不同。文献当中，这两种FEL的绘制方式都很常见。
+我们发现，通过前两个主成分做出来的FEL和通过`RMSD`、`Gyrate`做出来的FEL并不一样。是的，因为它们代表了蛋白不同尺度（或者方向）上的运动，对于蛋白的表示不同，得到的FEL也会不同。文献当中，这两种FEL的绘制方式都很常见。
 
 
 
 
 ### **能量分析**
-本文后续的计算分析需要借助Linux系统的`AmberTools`和`gmx_MMPBSA`来完成。
+本文后续的计算分析需要借助Linux系统的`AmberTools`和`gmx_MMPBSA`来完成，请 参照本站前文的安装方法在Linux系统上正确安装软件包后进行操作。
 
 #### **MM-PBSA 结合自由能计算**
 **作用**：估算蛋白质-配体结合自由能（ΔG<sub>bind</sub>）。    
@@ -1036,9 +1055,52 @@ print_res="within 4"
 ```
 mpirun -np 8 gmx_MMPBSA -O -i mmpbsa.in -cs com.tpr -ci index.ndx -cg 1 13 -ct com_traj.xtc -cp topol.top
 ```
-若出现报错，请根据提示自行查证，最常见的错误是拓扑文件丢失或名称不对应，按照提示改正即可，运行成功的标志是生成了 `FINAL_DECOMP_MMPBSA.dat`、`FINAL_RESULTS_MMPBSA.dat`文件，在。
+若出现报错，请根据提示自行查证，最常见的错误是拓扑文件丢失或名称不对应，按照提示改正即可，运行成功的标志是生成了 `FINAL_DECOMP_MMPBSA.dat`、`FINAL_RESULTS_MMPBSA.dat`文件，随后将会自动打开一个图形化界面，在此界面完成数据分析即可。
 
 #### **残基能量分解**
-**作用**：识别对结合自由能贡献大的残基。  
+**作用**：识别对结合自由能贡献大的残基。
 
----
+`FINAL_RESULTS_MMPBSA.dat`文件里记录了体系的各项总能量数据，包含四个统计表，表的各项释义如下：
+
+|能量组分|含义|
+|---|---|
+|BOND|键能|
+|ANGLE|角能|
+|DIHED|二面角能|
+|VDWAALS|范德华力|
+|EEL|静电势能|
+|1 - 4 VDW|分子中相隔3个键的原子对的范德华作用|
+|1 - 4 EEL|相隔3个键的原子对的静电相互作用能量|
+|EPB|溶剂化自由能|
+|ENPOLAR|非极性溶剂化自由能|
+|EDISPER||
+|GGAS|分子力学项|
+|GSOLV|分子溶剂化项|
+|TOTAL|总能量|
+
+**复合物各项能量组分**
+
+![](结合自由能数据表-01.svg)
+
+**受体各项能量组分**
+
+![](结合自由能数据表-02.svg)
+
+**配体各项能量组分**
+
+![](结合自由能数据表-03.svg)
+
+**总自由能变化**
+
+![](结合自由能数据表-04.svg)
+
+将以上数据归类借助数据分析可视化软件可得到如下统计图表：
+
+![](结合自由能.svg)
+
+
+`FINAL_DECOMP_MMPBSA.dat`文件记录了每个氨基酸残基对体系自由能的贡献，同样借助统计可视化软件的可到如下图表：
+
+![](残基自由能贡献.svg)
+
+至此，就完成了蛋白配体复合物动力学模拟及数据分析的全流程。
