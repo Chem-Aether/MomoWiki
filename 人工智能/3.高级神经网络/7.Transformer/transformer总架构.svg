@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="_图层_1" data-name="图层 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 565.79 595.22">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #c8e8f4;
+      }
+
+      .cls-1, .cls-2, .cls-3, .cls-4, .cls-5, .cls-6, .cls-7, .cls-8, .cls-9 {
+        stroke-miterlimit: 8;
+        stroke-width: 2px;
+      }
+
+      .cls-1, .cls-2, .cls-3, .cls-4, .cls-5, .cls-6, .cls-7, .cls-9 {
+        fill-rule: evenodd;
+      }
+
+      .cls-1, .cls-2, .cls-3, .cls-5, .cls-6, .cls-7, .cls-9 {
+        stroke: #040000;
+      }
+
+      .cls-10 {
+        font-size: 17.23px;
+      }
+
+      .cls-10, .cls-11, .cls-12 {
+        fill: #040000;
+        isolation: isolate;
+      }
+
+      .cls-10, .cls-12 {
+        font-family: DengXian, DengXian;
+      }
+
+      .cls-11 {
+        font-family: DengXian-Bold, DengXian;
+        font-size: 15.08px;
+        font-weight: 700;
+      }
+
+      .cls-2 {
+        fill: #f1c3ab;
+      }
+
+      .cls-3 {
+        fill: #b0d79e;
+      }
+
+      .cls-4 {
+        fill: #fff;
+        stroke: #022332;
+      }
+
+      .cls-13 {
+        fill: #165d7e;
+      }
+
+      .cls-5 {
+        fill: #eff0bf;
+      }
+
+      .cls-6 {
+        fill: #fbdfe0;
+      }
+
+      .cls-7 {
+        fill: #f2f2f2;
+      }
+
+      .cls-8 {
+        fill: none;
+        stroke: #165d7e;
+      }
+
+      .cls-12 {
+        font-size: 19.39px;
+      }
+
+      .cls-9 {
+        fill: #d9d9d9;
+      }
+    </style>
+  </defs>
+  <path class="cls-7" d="M46.42,151.23c0-8.92,7.23-16.15,16.15-16.15h130.07c8.92,0,16.15,7.23,16.15,16.15v255.28c0,8.92-7.23,16.15-16.15,16.15H62.57c-8.92,0-16.15-7.23-16.15-16.15v-255.28Z"/>
+  <path class="cls-6" d="M77.12,491.59c0-5.06,4.1-9.15,9.15-9.15h102.05c5.06,0,9.15,4.1,9.15,9.15v30.16c0,5.06-4.1,9.15-9.15,9.15h-102.05c-5.06,0-9.15-4.1-9.15-9.15v-30.16Z"/>
+  <text class="cls-10" transform="translate(118.11 502.63)"><tspan x="0" y="0">Input</tspan></text>
+  <text class="cls-10" transform="translate(94.89 523.63)"><tspan x="0" y="0">Embedding</tspan></text>
+  <path class="cls-2" d="M77.12,327.76c0-5.14,4.17-9.31,9.31-9.31h101.75c5.14,0,9.31,4.17,9.31,9.31v30.66c0,5.14-4.17,9.31-9.31,9.31h-101.75c-5.14,0-9.31-4.17-9.31-9.31v-30.66Z"/>
+  <text class="cls-10" transform="translate(94.35 338.64)"><tspan x="0" y="0">多头注意力</tspan></text>
+  <text class="cls-10" transform="translate(120.2 359.65)"><tspan x="0" y="0">模块</tspan></text>
+  <path class="cls-5" d="M77.12,284.51c0-3.12,2.53-5.65,5.65-5.65h109.07c3.12,0,5.65,2.53,5.65,5.65v18.6c0,3.12-2.53,5.65-5.65,5.65h-109.07c-3.12,0-5.65-2.53-5.65-5.65v-18.6Z"/>
+  <text class="cls-10" transform="translate(90.17 299.87)"><tspan x="0" y="0">连接</tspan></text>
+  <text class="cls-10" transform="translate(134.06 299.87)"><tspan x="0" y="0">+</tspan></text>
+  <text class="cls-10" transform="translate(150.22 299.87)"><tspan x="0" y="0">归一</tspan></text>
+  <path class="cls-1" d="M77.12,197.48c0-4.13,3.35-7.48,7.48-7.48h105.41c4.13,0,7.48,3.35,7.48,7.48v24.63c0,4.13-3.35,7.48-7.48,7.48h-105.41c-4.13,0-7.48-3.35-7.48-7.48v-24.63Z"/>
+  <text class="cls-10" transform="translate(102.96 215.86)"><tspan x="0" y="0">前馈网络</tspan></text>
+  <path class="cls-5" d="M77.12,152.69c0-3.03,2.46-5.49,5.49-5.49h109.38c3.03,0,5.49,2.46,5.49,5.49v18.09c0,3.03-2.46,5.49-5.49,5.49h-109.38c-3.03,0-5.49-2.46-5.49-5.49v-18.09Z"/>
+  <text class="cls-10" transform="translate(90.17 167.39)"><tspan x="0" y="0">连接</tspan></text>
+  <text class="cls-10" transform="translate(134.06 167.39)"><tspan x="0" y="0">+</tspan></text>
+  <text class="cls-10" transform="translate(150.22 167.39)"><tspan x="0" y="0">归一</tspan></text>
+  <path class="cls-8" d="M137.71,189.89v-13.62"/>
+  <path class="cls-13" d="M138.51,278.67v-43.7s-1.62,0-1.62,0v43.7s1.62,0,1.62,0ZM140.94,236.05l-3.23-6.46-3.23,6.46h6.46Z"/>
+  <path class="cls-8" d="M137.71,318.33v-9.57"/>
+  <path class="cls-4" d="M128.01,452.54c0-5.35,4.34-9.69,9.69-9.69s9.69,4.34,9.69,9.69-4.34,9.69-9.69,9.69-9.69-4.34-9.69-9.69Z"/>
+  <text class="cls-12" transform="translate(130.97 459.01)"><tspan x="0" y="0">+</tspan></text>
+  <path class="cls-13" d="M138.51,443.07v-69.96s-1.62,0-1.62,0v69.96s1.62,0,1.62,0ZM140.94,374.19l-3.23-6.46-3.23,6.46h6.46Z"/>
+  <path class="cls-13" d="M136.68,260.76v.12l.81-.81H57.73l.81.81v-99.15l-.81.81h14v-1.62h-14.81v100.76h81.37v-.93h-1.62ZM70.66,164.97l6.46-3.23-6.46-3.23v6.46Z"/>
+  <path class="cls-13" d="M137.49,408.15c-.45,0-.81.36-.81.81v.69l.81-.81H57.73l.81.81v-115.43l-.81.81h13.19c.45,0,.81-.36.81-.81h0c0-.45-.36-.81-.81-.81h-13.19c-.45,0-.81.36-.81.81v115.43c0,.45.36.81.81.81h79.76c.45,0,.81-.36.81-.81v-.69c0-.45-.36-.81-.81-.81h0ZM70.66,297.45l6.46-3.23-6.46-3.23v6.46Z"/>
+  <path class="cls-13" d="M138.51,482.12v-14.49s-1.62,0-1.62,0v14.49s1.62,0,1.62,0ZM140.94,468.7l-3.23-6.46-3.23,6.46h6.46Z"/>
+  <path class="cls-7" d="M259.69,62.37c0-8.92,7.23-16.15,16.15-16.15h130.07c8.92,0,16.15,7.23,16.15,16.15v344.14c0,8.92-7.23,16.15-16.15,16.15h-130.07c-8.92,0-16.15-7.23-16.15-16.15V62.37Z"/>
+  <path class="cls-6" d="M270.19,491.59c0-5.06,4.1-9.15,9.15-9.15h102.86c5.06,0,9.15,4.1,9.15,9.15v30.16c0,5.06-4.1,9.15-9.15,9.15h-102.86c-5.06,0-9.15-4.1-9.15-9.15v-30.16Z"/>
+  <text class="cls-10" transform="translate(306.03 502.63)"><tspan x="0" y="0">output</tspan></text>
+  <text class="cls-10" transform="translate(288.39 523.63)"><tspan x="0" y="0">Embedding</tspan></text>
+  <path class="cls-2" d="M270.19,327.76c0-5.14,4.17-9.31,9.31-9.31h102.56c5.14,0,9.31,4.17,9.31,9.31v30.66c0,5.14-4.17,9.31-9.31,9.31h-102.56c-5.14,0-9.31-4.17-9.31-9.31v-30.66Z"/>
+  <text class="cls-10" transform="translate(313.7 338.64)"><tspan x="0" y="0">掩码</tspan></text>
+  <text class="cls-10" transform="translate(287.85 359.65)"><tspan x="0" y="0">多头注意力</tspan></text>
+  <path class="cls-5" d="M270.19,284.51c0-3.12,2.53-5.65,5.65-5.65h109.88c3.12,0,5.65,2.53,5.65,5.65v18.6c0,3.12-2.53,5.65-5.65,5.65h-109.88c-3.12,0-5.65-2.53-5.65-5.65v-18.6Z"/>
+  <text class="cls-10" transform="translate(283.68 299.87)"><tspan x="0" y="0">连接</tspan></text>
+  <text class="cls-10" transform="translate(327.57 299.87)"><tspan x="0" y="0">+</tspan></text>
+  <text class="cls-10" transform="translate(343.73 299.87)"><tspan x="0" y="0">归一</tspan></text>
+  <path class="cls-8" d="M330.77,318.33v-9.57"/>
+  <path class="cls-4" d="M321.08,452.54c0-5.35,4.34-9.69,9.69-9.69s9.69,4.34,9.69,9.69-4.34,9.69-9.69,9.69-9.69-4.34-9.69-9.69Z"/>
+  <text class="cls-12" transform="translate(324.47 459.01)"><tspan x="0" y="0">+</tspan></text>
+  <path class="cls-13" d="M331.58,443.07v-69.96s-1.62,0-1.62,0v69.96s1.62,0,1.62,0ZM334,374.19l-3.23-6.46-3.23,6.46h6.46Z"/>
+  <path class="cls-13" d="M331.58,482.12v-14.49s-1.62,0-1.62,0v14.49s1.62,0,1.62,0ZM334,468.7l-3.23-6.46-3.23,6.46h6.46Z"/>
+  <path class="cls-2" d="M270.19,208.2c0-5.14,4.17-9.31,9.31-9.31h102.56c5.14,0,9.31,4.17,9.31,9.31v30.66c0,5.14-4.17,9.31-9.31,9.31h-102.56c-5.14,0-9.31-4.17-9.31-9.31v-30.66Z"/>
+  <text class="cls-10" transform="translate(287.85 219.09)"><tspan x="0" y="0">多头注意力</tspan></text>
+  <text class="cls-10" transform="translate(313.7 240.09)"><tspan x="0" y="0">模块</tspan></text>
+  <path class="cls-5" d="M270.19,165.61c0-3.03,2.46-5.49,5.49-5.49h110.19c3.03,0,5.49,2.46,5.49,5.49v18.09c0,3.03-2.46,5.49-5.49,5.49h-110.19c-3.03,0-5.49-2.46-5.49-5.49v-18.09Z"/>
+  <text class="cls-10" transform="translate(283.68 180.31)"><tspan x="0" y="0">连接</tspan></text>
+  <text class="cls-10" transform="translate(327.57 180.31)"><tspan x="0" y="0">+</tspan></text>
+  <text class="cls-10" transform="translate(343.73 180.31)"><tspan x="0" y="0">归一</tspan></text>
+  <path class="cls-8" d="M330.77,198.77v-9.57"/>
+  <path class="cls-13" d="M329.96,422.69v-14.8h80.57l-.81.81v-66.01l.81.81h-14v-1.62h14.81v67.63h-80.57l.81-.81v13.99h-1.62ZM397.61,345.91l-6.46-3.23,6.46-3.23v6.46Z"/>
+  <path class="cls-1" d="M270.19,110.24c0-4.13,3.35-7.48,7.48-7.48h106.22c4.13,0,7.48,3.35,7.48,7.48v24.63c0,4.13-3.35,7.48-7.48,7.48h-106.22c-4.13,0-7.48-3.35-7.48-7.48v-24.63Z"/>
+  <text class="cls-10" transform="translate(296.47 128.61)"><tspan x="0" y="0">前馈网络</tspan></text>
+  <path class="cls-5" d="M270.19,64.79c0-3.12,2.53-5.65,5.65-5.65h109.88c3.12,0,5.65,2.53,5.65,5.65v18.6c0,3.12-2.53,5.65-5.65,5.65h-109.88c-3.12,0-5.65-2.53-5.65-5.65v-18.6Z"/>
+  <text class="cls-10" transform="translate(283.68 80.15)"><tspan x="0" y="0">连接</tspan></text>
+  <text class="cls-10" transform="translate(327.57 80.15)"><tspan x="0" y="0">+</tspan></text>
+  <text class="cls-10" transform="translate(343.73 80.15)"><tspan x="0" y="0">归一</tspan></text>
+  <path class="cls-8" d="M330.77,102.65v-13.62"/>
+  <path class="cls-8" d="M330.77,159.52v-17.18"/>
+  <path class="cls-13" d="M331.58,151.98v2.06l-.81-.81h79.76l-.81.81v-79.54l.81.81h-14v-1.62h14.81v81.16h-81.37v-2.86h1.62ZM397.61,77.72l-6.46-3.23,6.46-3.23v6.46Z"/>
+  <path class="cls-9" d="M433.36,64.79c0-3.12,2.53-5.65,5.65-5.65h109.07c3.12,0,5.65,2.53,5.65,5.65v18.6c0,3.12-2.53,5.65-5.65,5.65h-109.07c-3.12,0-5.65-2.53-5.65-5.65v-18.6Z"/>
+  <text class="cls-10" transform="translate(467.79 80.15)"><tspan x="0" y="0">线性层</tspan></text>
+  <path class="cls-3" d="M433.36,113.26c0-3.12,2.53-5.65,5.65-5.65h109.07c3.12,0,5.65,2.53,5.65,5.65v18.6c0,3.12-2.53,5.65-5.65,5.65h-109.07c-3.12,0-5.65-2.53-5.65-5.65v-18.6Z"/>
+  <text class="cls-10" transform="translate(463.62 127.81)"><tspan x="0" y="0">Softmax</tspan></text>
+  <path class="cls-13" d="M330.77,60.22v-31.97h164.32v25.51h-1.62v-24.7l.81.81h-162.71l.81-.81v31.17h-1.62ZM497.52,52.68l-3.23,6.46-3.23-6.46h6.46Z"/>
+  <text class="cls-12" transform="translate(473.99 183.54)"><tspan x="0" y="0">概率</tspan></text>
+  <path class="cls-13" d="M494.76,137.5v19.16h-1.62v-19.16h1.62ZM497.18,155.58l-3.23,6.46-3.23-6.46h6.46Z"/>
+  <path class="cls-13" d="M136.9,396.93v-14.48h24.86l-.81.81v-10.15h1.62v10.95h-24.86l.81-.81v13.67h-1.62ZM158.52,374.19l3.23-6.46,3.23,6.46h-6.46Z"/>
+  <path class="cls-13" d="M138.51,399.69v-16.79h-25.8l.82.81v-10.6h-1.64v11.4h25.8l-.82-.81v15.98h1.64ZM115.99,374.19l-3.28-6.46-3.28,6.46h6.56Z"/>
+  <path class="cls-13" d="M329.96,396.93v-14.48h24.86l-.81.81v-10.15h1.62v10.95h-24.86l.81-.81v13.67h-1.62ZM351.59,374.19l3.23-6.46,3.23,6.46h-6.46Z"/>
+  <path class="cls-13" d="M331.58,399.43v-16.79h-25.33l.81.81v-10.6h-1.61v11.4h25.33l-.81-.81v15.98h1.61ZM309.48,373.93l-3.22-6.46-3.22,6.46h6.44Z"/>
+  <path class="cls-13" d="M329.96,278.28v-14.65c0-.45.36-.81.81-.81h28.26l-.81.81v-9.27c0-.45.36-.81.81-.81h0c.45,0,.81.36.81.81v9.27c0,.45-.36.81-.81.81h-28.26l.81-.81v14.65c0,.45-.36.81-.81.81h0c-.45,0-.81-.36-.81-.81ZM356.39,253.46l1.92-3.85c.3-.6,1.15-.6,1.45,0l1.92,3.85c.27.54-.12,1.17-.72,1.17h-3.85c-.6,0-.99-.63-.72-1.17Z"/>
+  <path class="cls-13" d="M331.37,267.84l.02-1.62h80.03l-.81.81v-95.65l.81.81h-14v-1.62h14.81v97.27h-80.03l.81-.81-.02.81h-1.62ZM398.95,174.62l-6.46-3.23,6.46-3.23v6.46Z"/>
+  <path class="cls-13" d="M138.51,147.19v-19.39l-.81.81h94.9l-.81-.81v133.85h100.23v-7.84h-1.62v7.04l.81-.81h-98.61l.81.81V127h-96.51v20.19h1.62ZM334.44,254.89l-3.23-6.46-3.23,6.46h6.46Z"/>
+  <path class="cls-13" d="M300.88,260.81v-7.25s-1.62,0-1.62,0v7.25s1.62,0,1.62,0ZM303.31,254.63l-3.23-6.46-3.23,6.46h6.46Z"/>
+  <path class="cls-13" d="M494.76,89.03v12.9h-1.62v-12.9h1.62ZM497.18,100.85l-3.23,6.46-3.23-6.46h6.46Z"/>
+  <text class="cls-12" transform="translate(117.78 580.99)"><tspan x="0" y="0">输入</tspan></text>
+  <text class="cls-12" transform="translate(291.02 580.99)"><tspan x="0" y="0">上步输出</tspan></text>
+  <path class="cls-13" d="M138.51,558.97v-22.68s-1.62,0-1.62,0v22.68s1.62,0,1.62,0ZM140.94,537.37l-3.23-6.46-3.23,6.46h6.46Z"/>
+  <path class="cls-13" d="M330.5,558.98l-.44-22.68,1.62-.03.43,22.68-1.61.03ZM327.67,537.43l3.11-6.52,3.35,6.4-6.46.12Z"/>
+  <text class="cls-12" transform="translate(380.02 459.82)"><tspan x="0" y="0">位置嵌入</tspan></text>
+  <text class="cls-12" transform="translate(31.63 459.82)"><tspan x="0" y="0">位置嵌入</tspan></text>
+  <text class="cls-12" transform="translate(437.28 296.64)"><tspan x="0" y="0">N</tspan></text>
+  <text class="cls-12" transform="translate(456.66 296.64)"><tspan x="0" y="0">x</tspan></text>
+  <text class="cls-12" transform="translate(12.17 296.64)"><tspan x="0" y="0">N</tspan></text>
+  <text class="cls-12" transform="translate(31.56 296.64)"><tspan x="0" y="0">x</tspan></text>
+  <text class="cls-12" transform="translate(45.58 114.88)"><tspan x="0" y="0">encode</tspan></text>
+  <text class="cls-12" transform="translate(260.22 32.48)"><tspan x="0" y="0">decode</tspan></text>
+  <text class="cls-11" transform="translate(93.37 387.11)"><tspan x="0" y="0">Q</tspan></text>
+  <text class="cls-11" transform="translate(140.94 397.61)"><tspan x="0" y="0">K</tspan></text>
+  <text class="cls-11" transform="translate(168.23 387.11)"><tspan x="0" y="0">V</tspan></text>
+  <text class="cls-11" transform="translate(290.33 387.11)"><tspan x="0" y="0">Q</tspan></text>
+  <text class="cls-11" transform="translate(337.91 397.61)"><tspan x="0" y="0">K</tspan></text>
+  <text class="cls-11" transform="translate(365.2 387.11)"><tspan x="0" y="0">V</tspan></text>
+  <text class="cls-11" transform="translate(363.01 261.9)"><tspan x="0" y="0">Q</tspan></text>
+  <text class="cls-11" transform="translate(316.8 274.83)"><tspan x="0" y="0">V</tspan></text>
+  <text class="cls-11" transform="translate(292.99 274.83)"><tspan x="0" y="0">K</tspan></text>
+</svg>
