@@ -11,7 +11,7 @@ hero:
       text: 联系作者
       link: /contacts
     - theme: alt
-      text: 网站介绍
+      text: 如何学习
       link: /introduction
 
 features:
