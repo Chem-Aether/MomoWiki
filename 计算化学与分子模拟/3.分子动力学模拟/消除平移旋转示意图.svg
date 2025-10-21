@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="_图层_1" data-name="图层 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 368.87 147.13">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #e7211a;
+      }
+
+      .cls-1, .cls-2, .cls-3, .cls-4 {
+        fill-rule: evenodd;
+      }
+
+      .cls-5, .cls-6 {
+        fill: #040000;
+      }
+
+      .cls-6 {
+        font-family: DengXian, DengXian;
+        font-size: 10.03px;
+        isolation: isolate;
+      }
+
+      .cls-2 {
+        fill: #ecad82;
+      }
+
+      .cls-3 {
+        fill: #fae4d5;
+      }
+
+      .cls-4 {
+        fill: #b41d23;
+      }
+    </style>
+  </defs>
+  <path class="cls-5" d="M9.32,113.92h155.45v.72H9.32v-.72ZM164.05,112.13l4.3,2.15-4.3,2.15v-4.3Z"/>
+  <path class="cls-5" d="M24.72,133.68V18.46s-.72,0-.72,0v115.22s.72,0,.72,0ZM26.51,19.18l-2.15-4.3-2.15,4.3h4.3Z"/>
+  <path class="cls-3" d="M32.69,64.58c0-4.45,3.61-8.06,8.06-8.06s8.06,3.61,8.06,8.06-3.61,8.06-8.06,8.06-8.06-3.61-8.06-8.06Z"/>
+  <path class="cls-1" d="M40.75,50.07c0-7.12,5.89-12.89,13.16-12.89s13.16,5.77,13.16,12.89-5.89,12.89-13.16,12.89-13.16-5.77-13.16-12.89Z"/>
+  <path class="cls-3" d="M62.24,63.24c0-4.3,3.61-7.79,8.06-7.79s8.06,3.49,8.06,7.79-3.61,7.79-8.06,7.79-8.06-3.49-8.06-7.79Z"/>
+  <path class="cls-3" d="M104.48,79.45c2.22-3.85,7.14-5.17,10.99-2.94,3.85,2.22,5.17,7.14,2.95,10.99-2.22,3.85-7.14,5.17-10.99,2.95-3.85-2.22-5.17-7.14-2.95-10.99Z"/>
+  <path class="cls-1" d="M118.63,71.03c3.61-6.25,11.61-8.4,17.86-4.79,6.25,3.61,8.4,11.61,4.79,17.86-3.61,6.25-11.61,8.4-17.86,4.79-6.25-3.61-8.4-11.61-4.79-17.86Z"/>
+  <path class="cls-3" d="M142.18,82.54c2.22-3.85,7.14-5.17,10.99-2.95,3.85,2.22,5.17,7.14,2.94,10.99-2.22,3.85-7.14,5.17-10.99,2.95-3.85-2.22-5.17-7.14-2.94-10.99Z"/>
+  <path class="cls-5" d="M198.97,113.92h155.45v.72h-155.45v-.72ZM353.71,112.13l4.3,2.15-4.3,2.15v-4.3Z"/>
+  <path class="cls-5" d="M214.38,133.68V18.46s-.72,0-.72,0v115.22s.72,0,.72,0ZM216.17,19.18l-2.15-4.3-2.15,4.3h4.3Z"/>
+  <path class="cls-2" d="M223.96,88.22c0-4.45,3.49-8.06,7.79-8.06s7.79,3.61,7.79,8.06-3.49,8.06-7.79,8.06-7.79-3.61-7.79-8.06Z"/>
+  <path class="cls-4" d="M231.48,73.71c0-7.12,5.89-12.89,13.16-12.89s13.16,5.77,13.16,12.89-5.89,12.89-13.16,12.89-13.16-5.77-13.16-12.89Z"/>
+  <path class="cls-2" d="M252.97,86.61c0-4.45,3.61-8.06,8.06-8.06s8.06,3.61,8.06,8.06-3.61,8.06-8.06,8.06-8.06-3.61-8.06-8.06Z"/>
+  <path class="cls-3" d="M221.27,86.07c0-4.45,3.61-8.06,8.06-8.06s8.06,3.61,8.06,8.06-3.61,8.06-8.06,8.06-8.06-3.61-8.06-8.06Z"/>
+  <path class="cls-1" d="M229.33,71.3c0-7.27,5.89-13.16,13.16-13.16s13.16,5.89,13.16,13.16-5.89,13.16-13.16,13.16-13.16-5.89-13.16-13.16Z"/>
+  <path class="cls-3" d="M255.66,69.42c0-4.45,3.61-8.06,8.06-8.06s8.06,3.61,8.06,8.06-3.61,8.06-8.06,8.06-8.06-3.61-8.06-8.06Z"/>
+  <text class="cls-6" transform="translate(54.16 24.82)"><tspan x="0" y="0">构象</tspan></text>
+  <text class="cls-6" transform="translate(74.21 24.82)"><tspan x="0" y="0">1</tspan></text>
+  <text class="cls-6" transform="translate(157.13 55.98)"><tspan x="0" y="0">构象</tspan></text>
+  <text class="cls-6" transform="translate(177.19 55.98)"><tspan x="0" y="0">2</tspan></text>
+  <text class="cls-6" transform="translate(281.18 66.19)"><tspan x="0" y="0">构象</tspan></text>
+  <text class="cls-6" transform="translate(301.24 66.19)"><tspan x="0" y="0">1</tspan></text>
+  <text class="cls-6" transform="translate(266.18 103.26)"><tspan x="0" y="0">构象</tspan></text>
+  <text class="cls-6" transform="translate(286.23 103.26)"><tspan x="0" y="0">2</tspan></text>
+  <text class="cls-6" transform="translate(68.05 133.89)"><tspan x="0" y="0">原始位置</tspan></text>
+  <text class="cls-6" transform="translate(233.81 133.89)"><tspan x="0" y="0">消除平移旋转后的坐标</tspan></text>
+  <text class="cls-6" transform="translate(10.18 19.45)"><tspan x="0" y="0">y</tspan></text>
+  <text class="cls-6" transform="translate(163.19 128.51)"><tspan x="0" y="0">x</tspan></text>
+  <text class="cls-6" transform="translate(202.47 19.45)"><tspan x="0" y="0">y</tspan></text>
+  <text class="cls-6" transform="translate(355.48 128.51)"><tspan x="0" y="0">x</tspan></text>
+</svg>

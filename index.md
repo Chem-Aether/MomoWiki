@@ -20,7 +20,7 @@ features:
     link: /系统配置/
   - title: 计算化学与分子模拟
     details: 利用数学方法研究化学生物学模型
-    link: /动力学模拟/
+    link: /计算化学与分子模拟/
   - title: 药物设计概论
     details: 生信、CADD、AIDD各领域介绍
     link: /药物设计概论/  
