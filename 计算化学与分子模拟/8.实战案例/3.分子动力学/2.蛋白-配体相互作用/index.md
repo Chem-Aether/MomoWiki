@@ -19,7 +19,14 @@
 ```
 gmx pdb2gmx -f protein.pdb -o protein.gro -ter
 ```
-对于输出的下列待选项目，我们需要选择力场和水模型，力场选择`AMBER99SB-ILDN`,水模型选择`TIP3P`
+
+在此过程中可能会报错，提示H原子类型不匹配或氢原子命名错误，这时可以选择使用`-ignh`命令，忽视原有氢原子，此时gromacs会自动加全氢
+
+```
+gmx pdb2gmx -f protein.pdb -o protein.gro -ter -ignh
+```
+
+对于输出的下列待选项目，我们需要选择力场和水模型，力场选择`AMBER99SB-ILDN`，键入**7**
 ```
 From '/usr/local/gromacs/share/gromacs/top':
  2: AMBER03 protein, nucleic AMBER94 (Duan et al., J. Comp. Chem. 24, 1999-2012, 2003)
@@ -27,7 +34,7 @@ From '/usr/local/gromacs/share/gromacs/top':
  4: AMBER96 protein, nucleic AMBER94 (Kollman et al., Acc. Chem. Res. 29, 461-469, 1996)
  5: AMBER99 protein, nucleic AMBER94 (Wang et al., J. Comp. Chem. 21, 1049-1074, 2000)
  6: AMBER99SB protein, nucleic AMBER94 (Hornak et al., Proteins 65, 712-725, 2006)
- 7: AMBER99SB-ILDN protein, nucleic AMBER94 (Lindorff-Larsen et al., Proteins 78, 1950-58, 2010)
+ 7: AMBER99SB-ILDN protein, nucleic AMBER94 (Lindorff-Larsen et al., Proteins 78, 1950-58, 2010)   // [!code warning]
  8: AMBERGS force field (Garcia & Sanbonmatsu, PNAS 99, 2782-2787, 2002)
  9: CHARMM27 all-atom force field (CHARM22 plus CMAP for proteins)
 10: GROMOS96 43a1 force field
@@ -39,15 +46,45 @@ From '/usr/local/gromacs/share/gromacs/top':
 16: OPLS-AA/L all-atom force field (2001 aminoacid dihedrals)
 ```
 
-在此过程中可能会报错，提示H原子类型不匹配或氢原子命名错误，这时可以选择使用`-ignh`命令，忽视原有氢原子，此时gromacs会自动加全氢
+选择水力场模型, 水模型选择`TIP3P`，键入**1**
 
 ```
-gmx pdb2gmx -f protein.pdb -o protein.gro -ter -ignh
+Select the Water Model:
+ 1: TIP3P     TIP 3-point, recommended   // [!code warning]
+ 2: TIP4P     TIP 4-point
+ 3: TIP4P-Ew  TIP 4-point optimized with Ewald
+ 4: TIP5P     TIP 5-point (see http://redmine.gromacs.org/issues/1348 for issues)
+ 5: SPC       simple point charge
+ 6: SPC/E     extended simple point charge
+ 7: None
 ```
 
-在这一步里可能会出现`Total charge in system x.000 e`的提示，说明体系电荷不为零，在后续的溶剂化过程中为其添加抗衡离子即可。
+程序运行结束会输出体系的信息，这里会看到`Total charge in system x.000 e`的提示，说明体系电荷不为零，需要在后续的溶剂化过程中为其添加抗衡离子。
 
-最终会生成拓`topol.top`拓扑文件，和大蛋白的`protein.gro`文件，该文件可以用`pymol`可视化预览。
+```
+There are 6924 dihedrals,  522 impropers, 4751 angles
+          6847 pairs,     2634 bonds and     0 virtual sites
+Total mass 18512.384 a.m.u.
+Total charge 6.000 e      // [!code error]
+Writing topology
+
+Writing coordinate file...
+                --------- PLEASE NOTE ------------
+You have successfully generated a topology from: protein.pdb.
+The AmberGS force field and the tip3p water model are used.
+                --------- ETON ESAELP ------------
+
+```
+
+目录内会生成如下文件，可以用`pymol`可视化预览大蛋白的`protein.gro`文件。
+
+```bash
+dir/
+├── posre.itp       # 蛋白的位置限制文件
+├── protein.gro     # 蛋白gro文件
+└── topol.top       # 体系拓扑文件
+```
+
 
 ![](protein.png)
 
@@ -113,7 +150,7 @@ USER_CHARGES
 该小分子`mol2`文件（邻丙基苯酚）可用`pymol`预览如下：
 ![](mol.png)
 
-
+### 生成拓扑
 小分子力场的选择是一个非常复杂的过程，还涉及多个软件配合，这里我们可以使用计算化学公社卢天老师开发的`sobtop`软件（[点击此处下载](http://sobereva.com/soft/Sobtop/)），快速构建小分子拓扑具体步骤如下：
 
 - 打开sobtop，把小分子mol.mol2拖入sobtop
@@ -128,6 +165,51 @@ USER_CHARGES
 - //回车，退出sobtop软件
 
 这时sobtop工作路径会出现`mol.gro`、`mol.itp`、`mol.top`三个文件，这就是小分子的拓扑文件，把他们复制到模拟的路径即可。
+
+
+### 位置约束
+
+蛋白质的限制势`itp`文件在`pdb2gmx`的时候已经产生，但小分子的没有，`genrestr`是对输入的结构产生坐标或距离限制势`itp`文件（`posre_mol.itp`）的工具，接下来运行命令，进行限制势的产生：
+
+```
+gmx genrestr -f mol.gro -o posre_mol.itp
+```
+
+选择**组0**，`system`默认的位置限制势常数是$1000 kJ/mol/nm^2$，已经足够大。
+```
+Reading structure file
+Select group to position restrain
+Group     0 (         System) has    22 elements
+Group     1 (          Other) has    22 elements
+Group     2 (            MOL) has    22 elements
+```
+
+得到了小分子的位置限制文件`posre_mol.itp`，将下列语句插入到`mol.itp`文件的末尾，复制时连同“#”井号一同复制，最好在末尾添加之前空一行，方便检查文件错误。
+
+```
+#ifdef POSRES
+#include "posre_mol.itp"
+#endif
+```
+
+最终修改好的`mol.itp`文件末尾应该为如下内容：
+
+```
+[ dihedrals ] ; impropers
+; atom_i  atom_j  atom_k  atom_l  functype  phase (Deg.)  kd (kJ/mol)  pn
+    4       7       3      15         4       180.000       4.60240    2     ; C8-C11-C7-H05, prebuilt X-X-ca-ha
+    3       5       4      16         4       180.000       4.60240    2     ; C7-C9-C8-H06, prebuilt X-X-ca-ha
+    4       6       5      17         4       180.000       4.60240    2     ; C8-C10-C9-H07, prebuilt X-X-ca-ha
+    1       5       6       8         4       180.000       4.60240    2     ; OAB-C9-C10-C12, guess (same as GAFF X -X -ca-ha)
+    3       8       7      18         4       180.000       4.60240    2     ; C7-C12-C11-H08, prebuilt X-X-ca-ha
+    6       7       8       9         4       180.000       4.60240    2     ; C10-C11-C12-C13, prebuilt ca-ca-ca-c3
+
+#ifdef POSRES  // [!code warning]
+#include "posre_mol.itp" // [!code warning]
+#endif // [!code warning]
+```
+
+这样当`mdp`中使用`define = -DPOSRES`的时候配体的位置也会被限制。
 
 ## 构建复合体
 ### 合并文件
@@ -174,72 +256,111 @@ Gyas ROwers Mature At Cryogenic Speed
 添加完成后，可以使用`pymol`可视化观察`complex.gro`，应该可以看到大蛋白和小分子配体共存。
 ![](complex.png)
 
-### 构建拓扑
+### 合并拓扑
 
-蛋白质的限制势`itp`文件在`pdb2gmx`的时候已经产生，但小分子的没有，`genrestr`是对输入的结构产生坐标或距离限制势`itp`文件（`posre_mol.itp`）的工具，接下来运行命令，进行限制势的产生：
+gmx输出的topol.top文件包含了蛋白的全部拓扑信息，使用该文件作为体系总拓扑也可运行，但是这里使用更加模块化的选择，将组分拓扑文件独立开来，总拓扑文件中只引用各自的itp文件，方便管理。
 
-```
-gmx genrestr -f mol.gro -o posre_mol.itp
-```
-
-选择**组0**，`system`默认的位置限制势常数是$1000 kJ/mol/nm^2$，已经足够大。
-```
-Reading structure file
-Select group to position restrain
-Group     0 (         System) has    22 elements
-Group     1 (          Other) has    22 elements
-Group     2 (            MOL) has    22 elements
-```
-
-得到了小分子的位置限制文件`posre_mol.itp`，将下列语句插入到`mol.itp`文件的末尾，复制时连同“#”井号一同复制，最好在末尾添加之前空一行，方便检查文件错误。
+新建`protein.itp`文件，把topol.top里的`moleculetype`（分子类型）、 `atoms`（原子）、`bonds`（化学键）、`pairs`（非键相互作用）、`angles`（键角）、`dihedrals`（二面角）以及末尾的蛋白约束文件剪切到新文件中。
 
 ```
-#ifdef POSRES
-#include "posre_mol.itp"
-#endif
+[ moleculetype ]    // [!code warning]
+; Name            nrexcl
+Protein_chain_A     3
+
+[ atoms ]    // [!code warning]
+;   nr       type  resnr residue  atom   cgnr     charge       mass  typeB    chargeB      massB
+; residue   1 MET rtp NMET q +1.0
+     1         N3      1    MET      N      1     0.1592      14.01
+     2          H      1    MET     H1      2     0.1984      1.008
+     3          H      1    MET     H2      3     0.1984      1.008
+......
+
+[ bonds ]    // [!code warning]
+;  ai    aj funct            c0            c1            c2            c3
+    1     2     1 
+    1     3     1 
+    1     4     1 
+......
+
+[ pairs ]    // [!code warning]
+;  ai    aj funct            c0            c1            c2            c3
+    1     8     1 
+    1     9     1 
+    1    10     1 
+......
+
+[ angles ]    // [!code warning]
+;  ai    aj    ak funct            c0            c1            c2            c3
+    2     1     3     1 
+    2     1     4     1 
+    2     1     5     1 
+......
+
+[ dihedrals ]    // [!code warning]
+;  ai    aj    ak    al funct            c0            c1            c2            c3            c4            c5
+    2     1     5     6     9 
+    2     1     5     7     9 
+    2     1     5    18     9 
+......
+
+[ dihedrals ]
+;  ai    aj    ak    al funct            c0            c1            c2            c3
+    5    20    18    19     4 
+   18    22    20    21     4 
+   22    34    32    33     4 
+......
+
+; Include Position restraint file               // [!code warning]
+#ifdef POSRES                                   // [!code warning]
+#include "posre.itp"                            // [!code warning]
+#endif                                          // [!code warning]
 ```
 
-最终修改好的`mol.itp`文件末尾应该为如下内容：
+把配体和蛋白的itp文件都引入整体的拓扑文件`topol.top`，在引入的时候需要将小分子的`mol.itp`文件引入到蛋白质链之前，因为`mol.itp`最开头定义了`[atomtypes]`，因此，这个`itp`要最优先被引入。
 
-```
-[ dihedrals ] ; impropers
-; atom_i  atom_j  atom_k  atom_l  functype  phase (Deg.)  kd (kJ/mol)  pn
-    4       7       3      15         4       180.000       4.60240    2     ; C8-C11-C7-H05, prebuilt X-X-ca-ha
-    3       5       4      16         4       180.000       4.60240    2     ; C7-C9-C8-H06, prebuilt X-X-ca-ha
-    4       6       5      17         4       180.000       4.60240    2     ; C8-C10-C9-H07, prebuilt X-X-ca-ha
-    1       5       6       8         4       180.000       4.60240    2     ; OAB-C9-C10-C12, guess (same as GAFF X -X -ca-ha)
-    3       8       7      18         4       180.000       4.60240    2     ; C7-C12-C11-H08, prebuilt X-X-ca-ha
-    6       7       8       9         4       180.000       4.60240    2     ; C10-C11-C12-C13, prebuilt ca-ca-ca-c3
+在`[system]`块下为项目设置名称，不影响模拟计算，随意设置即可。
 
-#ifdef POSRES  // [!code warning]
-#include "posre_mol.itp" // [!code warning]
-#endif // [!code warning]
-```
+在末尾的`[molecules]`中引入**MOL 1**，将`topol.top`的格式与`complex.gro`中分子出现的顺序对应：
 
-这样当`mdp`中使用`define = -DPOSRES`的时候配体的位置也会被限制。
-
-把配体的itp文件引入整体的拓扑文件`topol.top`，在引入的时候需要将小分子的`mol.itp`文件引入到蛋白质链之前，因为`mol.itp`最开头定义了`[atomtypes]`因此，这个`itp`要最优先被引入。
-
-即，将下列黄色语句插入到引入蛋白质的`topol.itp`文件引入之前，最终顺序如下；
+即，将下列黄色语句插入到引入蛋白质的`topol.itp`文件的对应位置，最终顺序如下：
 
 ```
 ; Include forcefield parameters
 #include "amber99sb-ildn.ff/forcefield.itp"
 
-#include "mol.itp"  // [!code warning]
+#include "mol.itp"            // [!code warning]
+#include "protein.itp"        // [!code warning]
 
-[ moleculetype ]
-; Name            nrexcl
-Protein_chain_A     3
-```
 
-在末尾的`[molecules]`中引入**MOL 1**，将`topol.top`的格式与`complex.gro`中分子出现的顺序对应：
-```
+; Include forcefield parameters
+#include "amberGS.ff/forcefield.itp"
+
+#include "mol.itp"
+#include "protein.itp"
+
+; Include water topology
+#include "amberGS.ff/tip3p.itp"
+
+#ifdef POSRES_WATER
+; Position restraint for each water oxygen
+[ position_restraints ]
+;  i funct       fcx        fcy        fcz
+   1    1       1000       1000       1000
+#endif
+
+; Include topology for ions
+#include "amberGS.ff/ions.itp"
+
+[ system ]
+; Name
+Protein Mol Complex in Water      // [!code warning]
+
 [ molecules ]
 ; Compound        #mols
 Protein_chain_A     1
-MOL                 1 // [!code warning]
+MOL                 1       // [!code warning]
 ```
+
 
 ## 溶剂化
 ### 设置盒子
@@ -285,24 +406,23 @@ SOL             12750   // [!code warning]
 构建一个`ions.mdp`配置文件：
 
 ```
-; LINES STARTING WITH ';' ARE COMMENTS
-title		    = Minimization	; Title of run
+title = Minimization              ; 模拟任务的标题
 
-; Parameters describing what to do, when to stop and what to save
-integrator	    = steep		; Algorithm (steep = steepest descent minimization)
-emtol		    = 1000.0  	; Stop minimization when the maximum force < 10.0 kJ/mol
-emstep          = 0.01      ; Energy step size
-nsteps		    = 50000	  	; Maximum number of (minimization) steps to perform
+; 描述做什么、何时停止以及保存什么内容的参数
+integrator = steep                ; 积分算法（steep = 最陡下降法，用于能量最小化）
+emtol = 1000.0                    ; 停止条件：当系统最大受力 < 1000 kJ/(mol·nm) 时停止
+emstep = 0.01                     ; 能量最小化初始步长 (nm)
+nsteps = 50000                    ; 最多执行（能量最小化的）步数
 
-; Parameters describing how to find the neighbors of each atom and how to calculate the interactions
-nstlist		    = 1		    ; Frequency to update the neighbor list and long range forces
-cutoff-scheme   = Verlet
-ns_type		    = grid		; Method to determine neighbor list (simple, grid)
-rlist		    = 1.0		; Cut-off for making neighbor list (short range forces)
-coulombtype	    = cutoff	; Treatment of long range electrostatic interactions
-rcoulomb	    = 1.0		; long range electrostatic cut-off
-rvdw		    = 1.0		; long range Van der Waals cut-off
-pbc             = xyz 		; Periodic Boundary Conditions
+; 描述如何寻找每个原子的邻居以及如何计算相互作用的参数
+nstlist = 1                       ; 更新邻居列表和长程力的频率（步）
+cutoff-scheme = Verlet            ; 邻居列表方案（Verlet 截断方案，现代GROMACS推荐）
+ns_type = grid                    ; 确定邻居列表的方法（grid = 网格法，速度快）
+rlist = 1.0                       ; 构建邻居列表的截断距离 (nm)
+coulombtype = cutoff              ; 长程静电相互作用的处理方法（cutoff = 简单截断）
+rcoulomb = 1.0                    ; 长程静电相互作用的截断距离 (nm)
+rvdw = 1.0                        ; 范德华相互作用的截断距离 (nm)
+pbc = xyz                         ; 周期性边界条件（xyz方向全部开启）
 ```
 
 生成临时tpr文件：
@@ -318,16 +438,43 @@ gmx grompp -f ions.mdp -c complex_SOL.gro -p topol.top -o ions.tpr -maxwarn 1
 gmx genion -s ions.tpr -p topol.top -o system.gro -neutral
 ```
 
-这里选择分组时选择 **SOL（15）** 对应的分组，产生的带有离子且电中性的体系为`system.gro`。同时可以额外使用`-pname NA -nname CL`来选择添加的阴阳离子类型，具体名称根据力场来选择。
+程序会提示选择哪个分组来添加离子，程序会将所选分组的原子随机替换成添加的离子，合理的情况应该是替换溶剂分子，而不是选择蛋白或小分子，因为这样会破坏其分子结构：
 
-最终的结果为总拓扑文件`[ molecules ]`后出现对应数目的离子，同时使用`pymol`也观察到`system.gro`文件中加载了氯离子，离子数目应该和上文的电荷数`Total charge in system x.000 e`相对应：
+```
+Will try to add 0 NA ions and 6 CL ions.
+Select a continuous group of solvent molecules
+Group     0 (         System) has 40886 elements
+Group     1 (        Protein) has  2614 elements
+Group     2 (      Protein-H) has  1301 elements
+Group     3 (        C-alpha) has   163 elements
+Group     4 (       Backbone) has   489 elements
+Group     5 (      MainChain) has   653 elements
+Group     6 (   MainChain+Cb) has   805 elements
+Group     7 (    MainChain+H) has   815 elements
+Group     8 (      SideChain) has  1799 elements
+Group     9 (    SideChain-H) has   648 elements
+Group    10 (    Prot-Masses) has  2614 elements
+Group    11 (    non-Protein) has 38272 elements
+Group    12 (          Other) has    22 elements
+Group    13 (            MOL) has    22 elements
+Group    14 (          Water) has 38250 elements
+Group    15 (            SOL) has 38250 elements   // [!code warning]
+Group    16 (      non-Water) has  2636 elements
+Select a group:
+```
+
+这里选择分组时选择 **SOL（15）** 对应的分组，也就是将水分子替换为离子，产生的带有离子且电中性的体系为`system.gro`。
+
+同时可以额外使用`-pname NA -nname CL`来选择添加的阴阳离子类型，具体名称根据力场来选择。
+
+最终的结果为总拓扑文件`[ molecules ]`后出现对应数目的离子，同时使用`pymol`也观察到`system.gro`文件中加载了氯离子，离子数目应该和上文的电荷数`Total charge in system x.000 e`相对应，相应的有6个水分子减少（替换为了离子）：
 
 ```
 [ molecules ]
 ; Compound        #mols
 Protein_chain_A     1
 MOL                 1
-SOL             12744
+SOL             12744   // [!code error]
 CL                  6  // [!code warning]
 ```
 
@@ -338,7 +485,6 @@ CL                  6  // [!code warning]
 创建如下`em.mdp`文件：
 
 ```
-; LINES STARTING WITH ';' ARE COMMENTS
 title		    = Minimization	; Title of run
 
 ; Parameters describing what to do, when to stop and what to save
@@ -391,56 +537,9 @@ gmx energy -f em.edr -o potential.xvg
 ![](Potential.png)
 
 ## 平衡
-### 约束配体
-为了约束配体，我们需要为其生成位置约束拓扑。首先，为 `MOL` 创建一个仅包含其非氢原子的索引组：
-```
-gmx make_ndx -f mol.gro -o index_mol.ndx
-```
 
-依次输入下列内容：
 
-```
- > 0 & ! a H*
- > q
-```
-然后，执行 `genrestr` 模块并选择这个新创建的索引组（将是 `index_mol.ndx` 文件中的第 3 组）：
-```
-gmx genrestr -f mol.gro -n index_mol.ndx -o posre_mol.itp -fc 1000 1000 1000
-```
-
-选择**组 3**：
-
-```
-Reading structure file
-Select group to position restrain
-Group     0 (         System) has    22 elements
-Group     1 (          Other) has    22 elements
-Group     2 (            MOL) has    22 elements
-Group     3 (   System_&_!H*) has    10 elements  // [!code warning]
-```
-
-将此信息包含在拓扑中，方法有很多种。最简单的，如果只想在蛋白质也被约束时抑制配体，在指示的位置将以下黄色代码行添加到拓扑文件`topol.itp`的对应位置中：
-
-```
-; Include Position restraint file
-#ifdef POSRES
-#include "posre.itp"
-#endif
-
-; Ligand position restraints  // [!code warning]
-#ifdef POSRES // [!code warning]
-#include "posre_mol.itp" // [!code warning]
-#endif // [!code warning]
-
-; Include water topology
-#include "amber99sb-ildn.ff/tip3p.itp"
-
-#ifdef POSRES_WATER
-```
-
-位置很重要，必须按照指示在拓扑中调用 `posre_mol.itp`。
-
-`mol.itp` 中的参数为我们的配体定义了一个指令，引用文件以包含水拓扑结构 （`tip3p.itp`） 结束，在其他任何位置调用 `posre_mol.itp` 将尝试将位置约束参数应用于错误的分子类型。
+### 建立索引组
 
 最后需要一个合并蛋白质和 MOL 的特殊索引组，通过 `make_ndx` 模块来实现这，提供整个系统的任何坐标文件。这里使用的是 `em.gro`，这是我们系统的输出（最小化）结构：
 
@@ -572,11 +671,14 @@ gen_temp                = 300       ; temperature for Maxwell distribution
 gen_seed                = -1        ; generate a random seed
 ```
 
-执行平衡：
+准备tpr文件：
 
 ```
 gmx grompp -f nvt.mdp -c em.gro -r em.gro -p topol.top -n index.ndx -o nvt.tpr
+```
 
+开始NVT平衡
+```
 gmx mdrun -deffnm nvt -v
 ```
 
@@ -654,11 +756,15 @@ DispCorr                = no
 gen_vel                 = no        ; velocity generation off after NVT 
 ```
 
-执行平衡：
+准备tpr文件：
 
 ```
 gmx grompp -f npt.mdp -c nvt.gro -t nvt.cpt -r nvt.gro -p topol.top -n index.ndx -o npt.tpr
+```
 
+执行平衡：
+
+```
 gmx mdrun -deffnm npt -v
 ```
 
@@ -740,11 +846,15 @@ DispCorr                = no
 gen_vel                 = no        ; continuing from NPT equilibration 
 ```
 
-执行命令，启动模拟，利用GPU加速，并输出详细步骤：
+准备tpr文件：
 
 ```
 gmx grompp -f md.mdp -c npt.gro -t npt.cpt -p topol.top -n index.ndx -o md_0.tpr
+```
 
+执行命令，启动模拟，利用GPU加速，并输出详细步骤：
+
+```
 gmx mdrun -deffnm md_0 -nb gpu -v
 ```
 
