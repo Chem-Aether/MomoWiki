@@ -3,7 +3,6 @@ import path from 'path'
 
 
 // 指定目录路径
-// const dirPath = './考研政治/';
 export function buildDirectoryTree(dirPath) {
   const tree = {
     text: path.basename(dirPath).split('.').length > 1 ? path.basename(dirPath).split('.')[1] : path.basename(dirPath),
@@ -50,12 +49,3 @@ export function buildDirectoryTree(dirPath) {
   return tree;
 }
 
-export function directoryTreeToJson(dirPath) {
-  const directoryTree = buildDirectoryTree(dirPath);
-  return JSON.stringify(directoryTree, null, 2);
-}
-
-
-// directoryTreeToJson('./考研政治');
-// console.log(directoryTreeToJson('./考研政治'));
-// 调用函数并打印结果
