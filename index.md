@@ -31,7 +31,7 @@ features:
     details: AI人工智能相关基础
     link: /人工智能/
   - title: 科普知识
-    details: 各自有用的知识
+    details: 各种有用的知识
     link: /科普知识/
 
 
