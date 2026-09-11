@@ -1,10 +1,11 @@
 import { defineConfig } from 'vitepress'
+import { withMermaid } from 'vitepress-plugin-mermaid'
 import { buildDirectoryTree } from './scripts/meun.mjs'
 import { abcjsPlugin } from './scripts/markdown-abcjs.js'
 
 // npm run docs:dev
 
-export default defineConfig({
+export default withMermaid(defineConfig({
   base: '/MomoWiki/',
 
   vite: {
@@ -56,5 +57,4 @@ export default defineConfig({
     },
     math: true
   },
-})
-
+}))
